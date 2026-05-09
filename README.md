@@ -111,6 +111,23 @@ Python dependencies are inside the requrements.txt
     pip install -r requirements.txt
     ```
 
+    Copy `.env.example` to `.env` in the repository root, then fill in your PocketBase admin credentials:
+
+    ```sh
+    POCKETBASE_URL=http://127.0.0.1:8090
+    DB_USER=your-pocketbase-admin-email@example.com
+    DB_PASSWORD=your-pocketbase-admin-password
+    ```
+
+    If PocketBase is running on the Raspberry Pi or another machine, replace `POCKETBASE_URL` with that server's reachable address.
+
+    To run the backend:
+
+    ```sh
+    cd src
+    py main.py
+    ```
+
 - Frontend Setup
 
     ```sh
@@ -120,6 +137,8 @@ Python dependencies are inside the requrements.txt
     ```sh
     npm install
     ```
+
+    For local development, optionally add `VITE_POCKETBASE_URL=http://127.0.0.1:8090` to `RocketControlUnitGUI/.env`. If omitted, the frontend uses `http://127.0.0.1:8090`.
 
     To run an instance for development:
 

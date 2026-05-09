@@ -6,7 +6,7 @@ import { currentState } from '../stores';
 export type PocketbaseHook = ReturnType<typeof usePocketbase>;
 
 export const usePocketbase = (timestamps: Timestamps, stores: Stores) => {
-	const pocketbase = new PocketBase('http://192.168.0.69:8090');
+	const pocketbase = new PocketBase(import.meta.env.VITE_POCKETBASE_URL ?? 'http://127.0.0.1:8090');
 
 	const formatTemperature = (temperature: number | undefined) => {
 		if (temperature === undefined) return undefined;

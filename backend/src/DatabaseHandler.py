@@ -2,8 +2,10 @@
 import os
 import json
 import multiprocessing as mp
+from pathlib import Path
 from typing import Tuple
 from pocketbase import Client
+from pocketbase.errors import ClientResponseError
 from pocketbase.services.realtime_service import MessageData
 from dotenv import load_dotenv
 
@@ -27,18 +29,54 @@ class DatabaseHandler():
         DatabaseHandler.send_message_workq = message_handler_workq
         DatabaseHandler.thread_name = thread_name
 
-        load_dotenv()
+        env_path = Path(__file__).resolve().parents[2] / '.env'
+        load_dotenv(dotenv_path=env_path)
         db_user = os.getenv('DB_USER')
         db_password = os.getenv('DB_PASSWORD')
+        db_url = os.getenv('POCKETBASE_URL', 'http://127.0.0.1:8090')
 
-        DatabaseHandler.client = Client('http://192.168.0.69:8090')
+        if not db_user or not db_password:
+            raise RuntimeError(
+                'Missing PocketBase credentials. Set DB_USER and DB_PASSWORD in the project .env file.'
+            )
+
+        logger.info(f"Connecting to PocketBase at {db_url}")
+        DatabaseHandler.client = Client(db_url)
         DatabaseHandler.client.auth_store.clear()
-        DatabaseHandler.client.admins.auth_with_password(db_user, db_password)
+        DatabaseHandler._auth_admin(db_user, db_password)
 
         DatabaseHandler.client.collection('Heartbeat').subscribe(DatabaseHandler._handle_heartbeat_callback)
         DatabaseHandler.client.collection('CommandMessage').subscribe(DatabaseHandler._handle_command_callback)
         DatabaseHandler.client.collection('LoadCellCommands').subscribe(DatabaseHandler._handle_load_cell_command_callback)
         logger.success(f"Successfully started {thread_name} thread")
+
+    @staticmethod
+    def _auth_admin(db_user: str, db_password: str):
+        """
+        Authenticate against both supported PocketBase admin APIs.
+        PocketBase v0.23+ uses the _superusers auth collection, while the
+        bundled v0.22.x binary still uses the older /api/admins endpoint.
+        """
+        try:
+            return DatabaseHandler.client.admins.auth_with_password(db_user, db_password)
+        except ClientResponseError as e:
+            if e.status != 404:
+                raise
+
+            logger.warning("PocketBase _superusers auth endpoint was not found; trying legacy admin auth")
+            response_data = DatabaseHandler.client.send(
+                '/api/admins/auth-with-password',
+                {
+                    'method': 'POST',
+                    'body': {
+                        'identity': db_user,
+                        'password': db_password,
+                    },
+                    'headers': {'Authorization': ''},
+                },
+            )
+            DatabaseHandler.client.auth_store.save(response_data.get('token', ''))
+            return response_data
 
     @staticmethod
     def _handle_heartbeat_callback(document: MessageData):
