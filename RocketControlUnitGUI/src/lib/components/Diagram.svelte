@@ -1,45 +1,31 @@
-<style>
-	svg * {
-		transition: all 0.15s ease;
-	}
-
-	.added-sensor text,
-	.added-heater text {
-		fill: var(--diagram-outline-color);
-		font-family: Quicksand, sans-serif;
-		font-size: 13px;
-		text-anchor: middle;
-		dominant-baseline: middle;
-	}
-
-	.added-sensor circle,
-	.added-sensor line,
-	.added-sensor polyline,
-	.added-heater rect,
-	.added-heater path {
-		stroke: var(--diagram-outline-color);
-	}
-
-	#Pressure\ Vessel {
-		display: none;
-	}
-
-	.diagram-label {
-		fill: var(--diagram-outline-color);
-		font-family: Quicksand, sans-serif;
-		font-size: 15px;
-		text-anchor: middle;
-		dominant-baseline: middle;
-	}
-</style>
-
 <svg class="diagram" viewBox="0 0 1920 880" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<g id="Background-Dark">
 		<g id="MV3_Vent">
-			<line id="Line 22" x1="440" y1="733.501" x2="448" y2="733.501" stroke="var(--diagram-ignitor-color)" />
+			<line
+				id="Line 22"
+				x1="440"
+				y1="733.501"
+				x2="448"
+				y2="733.501"
+				stroke="var(--diagram-ignitor-color)"
+			/>
 			<g id="Group 24">
-				<line id="Line 20" x1="434" y1="727.501" x2="454" y2="727.501" stroke="var(--diagram-ignitor-color)" />
-				<line id="Line 21" x1="437" y1="730.501" x2="451" y2="730.501" stroke="var(--diagram-ignitor-color)" />
+				<line
+					id="Line 20"
+					x1="434"
+					y1="727.501"
+					x2="454"
+					y2="727.501"
+					stroke="var(--diagram-ignitor-color)"
+				/>
+				<line
+					id="Line 21"
+					x1="437"
+					y1="730.501"
+					x2="451"
+					y2="730.501"
+					stroke="var(--diagram-ignitor-color)"
+				/>
 				<path
 					id="Arrow 20"
 					d="M444 727.054L438.226 717.054H449.774L444 727.054ZM445 709.001V718.054H443V709.001H445Z"
@@ -77,7 +63,14 @@
 				/>
 			</g>
 			<circle id="Ellipse 1_2" cx="107.5" cy="110.5" r="29" stroke="var(--diagram-outline-color)" />
-			<line id="Line 3_2" x1="78" y1="110" x2="137" y2="110" stroke="var(--diagram-outline-color)" />
+			<line
+				id="Line 3_2"
+				x1="78"
+				y1="110"
+				x2="137"
+				y2="110"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="SHED">
 			<mask id="path-13-inside-3_7_22" fill="white">
@@ -141,7 +134,14 @@
 		</g>
 		<g id="NOS2">
 			<g id="TANK">
-				<rect id="Rectangle 2" x="112.5" y="442.074" width="68" height="79.8525" stroke="var(--diagram-outline-color)" />
+				<rect
+					id="Rectangle 2"
+					x="112.5"
+					y="442.074"
+					width="68"
+					height="79.8525"
+					stroke="var(--diagram-outline-color)"
+				/>
 				<g id="Ellipse 2">
 					<mask id="path-24-inside-8_7_22" fill="white">
 						<path
@@ -283,7 +283,14 @@
 			</g>
 		</g>
 		<g id="AC box">
-			<rect id="Rectangle 1" x="70.5" y="22.5" width="153" height="45" stroke="var(--diagram-outline-color)" />
+			<rect
+				id="Rectangle 1"
+				x="70.5"
+				y="22.5"
+				width="153"
+				height="45"
+				stroke="var(--diagram-outline-color)"
+			/>
 			<g id="AC">
 				<mask id="path-39-inside-17_7_22" fill="white">
 					<path
@@ -328,7 +335,14 @@
 				/>
 			</g>
 		</g>
-		<rect id="Rectangle 3" x="1362.5" y="108.5" width="126" height="609" stroke="var(--diagram-outline-color)" />
+		<rect
+			id="Rectangle 3"
+			x="1362.5"
+			y="108.5"
+			width="126"
+			height="609"
+			stroke="var(--diagram-outline-color)"
+		/>
 		<g id="SV1">
 			<mask id="path-45-inside-18_7_22" fill="white">
 				<path
@@ -453,14 +467,30 @@
 				d="M51 474L45.2265 484L56.7735 484L51 474ZM52 511L52 483L50 483L50 511L52 511Z"
 				fill="var(--diagram-nos-color)"
 			/>
-			<line id="Line 4" x1="112" y1="510" x2="51" y2="510" stroke="var(--diagram-nos-color)" stroke-width="2" />
+			<line
+				id="Line 4"
+				x1="112"
+				y1="510"
+				x2="51"
+				y2="510"
+				stroke="var(--diagram-nos-color)"
+				stroke-width="2"
+			/>
 		</g>
 		<path
 			id="Arrow 4"
 			d="M357 278L347 272.226V283.774L357 278ZM51 279H348V277H51V279Z"
 			fill="var(--diagram-nos-color)"
 		/>
-		<line id="Line 5" x1="111" y1="376" x2="50" y2="376" stroke="var(--diagram-nos-color)" stroke-width="2" />
+		<line
+			id="Line 5"
+			x1="111"
+			y1="376"
+			x2="50"
+			y2="376"
+			stroke="var(--diagram-nos-color)"
+			stroke-width="2"
+		/>
 		<g id="SV2_2">
 			<mask id="path-69-inside-23_7_22" fill="white">
 				<path
@@ -593,7 +623,7 @@
 				mask="url(#path-89-inside-33_7_22)"
 			/>
 		</g>
-		<g id="VENT" transform="translate(0 25)">
+		<g id="VENT" transform="translate(0 437.5)">
 			<mask id="path-91-inside-34_7_22" fill="white">
 				<path
 					d="M1587.08 260.784C1587.23 260.784 1587.35 260.827 1587.44 260.912C1587.53 260.997 1587.58 261.104 1587.58 261.232C1587.58 261.307 1587.56 261.387 1587.53 261.472L1583.26 271.68C1583.21 271.787 1583.14 271.867 1583.05 271.92C1582.97 271.973 1582.88 272 1582.8 272C1582.7 272 1582.61 271.973 1582.52 271.92C1582.44 271.867 1582.38 271.792 1582.35 271.696L1578.09 261.504C1578.08 261.472 1578.07 261.435 1578.06 261.392C1578.05 261.349 1578.04 261.301 1578.04 261.248C1578.04 261.109 1578.09 260.997 1578.19 260.912C1578.3 260.827 1578.4 260.784 1578.51 260.784C1578.73 260.784 1578.89 260.901 1578.99 261.136L1582.99 270.704H1582.7L1586.64 261.104C1586.74 260.891 1586.89 260.784 1587.08 260.784ZM1590.11 260.8H1595.98C1596.11 260.8 1596.22 260.848 1596.32 260.944C1596.41 261.029 1596.46 261.141 1596.46 261.28C1596.46 261.419 1596.41 261.531 1596.32 261.616C1596.22 261.701 1596.11 261.744 1595.98 261.744H1590.48L1590.64 261.472V265.968L1590.46 265.76H1595.26C1595.39 265.76 1595.5 265.808 1595.6 265.904C1595.69 266 1595.74 266.112 1595.74 266.24C1595.74 266.379 1595.69 266.491 1595.6 266.576C1595.5 266.661 1595.39 266.704 1595.26 266.704H1590.49L1590.64 266.544V271.152L1590.56 271.056H1595.98C1596.11 271.056 1596.22 271.104 1596.32 271.2C1596.41 271.296 1596.46 271.408 1596.46 271.536C1596.46 271.675 1596.41 271.787 1596.32 271.872C1596.22 271.957 1596.11 272 1595.98 272H1590.11C1589.98 272 1589.87 271.952 1589.77 271.856C1589.68 271.76 1589.63 271.648 1589.63 271.52V261.28C1589.63 261.152 1589.68 261.04 1589.77 260.944C1589.87 260.848 1589.98 260.8 1590.11 260.8ZM1606.91 260.8C1607.05 260.8 1607.16 260.843 1607.23 260.928C1607.32 261.013 1607.36 261.12 1607.36 261.248V271.488C1607.36 271.648 1607.31 271.776 1607.2 271.872C1607.11 271.957 1606.99 272 1606.87 272C1606.8 272 1606.73 271.989 1606.66 271.968C1606.58 271.936 1606.53 271.893 1606.48 271.84L1599.35 262.224L1599.62 262.08V271.568C1599.62 271.685 1599.58 271.787 1599.49 271.872C1599.41 271.957 1599.3 272 1599.17 272C1599.03 272 1598.92 271.957 1598.83 271.872C1598.76 271.787 1598.72 271.685 1598.72 271.568V261.28C1598.72 261.12 1598.77 261.003 1598.87 260.928C1598.96 260.843 1599.07 260.8 1599.19 260.8C1599.25 260.8 1599.32 260.816 1599.39 260.848C1599.47 260.869 1599.53 260.912 1599.57 260.976L1606.63 270.48L1606.47 270.768V261.248C1606.47 261.12 1606.51 261.013 1606.59 260.928C1606.69 260.843 1606.8 260.8 1606.91 260.8ZM1613.69 272C1613.54 272 1613.42 271.952 1613.32 271.856C1613.24 271.76 1613.2 271.648 1613.2 271.52V261.328H1614.19V271.52C1614.19 271.648 1614.14 271.76 1614.04 271.856C1613.95 271.952 1613.83 272 1613.69 272ZM1609.88 261.712C1609.76 261.712 1609.64 261.669 1609.55 261.584C1609.45 261.499 1609.4 261.387 1609.4 261.248C1609.4 261.12 1609.45 261.013 1609.55 260.928C1609.64 260.843 1609.76 260.8 1609.88 260.8H1617.5C1617.63 260.8 1617.74 260.843 1617.84 260.928C1617.93 261.013 1617.98 261.125 1617.98 261.264C1617.98 261.403 1617.93 261.515 1617.84 261.6C1617.74 261.675 1617.63 261.712 1617.5 261.712H1609.88Z"
@@ -726,8 +756,22 @@
 			/>
 		</g>
 		<g id="NOS1_Check_Valve">
-			<line id="Line 6" x1="357.5" y1="270" x2="357.5" y2="285" stroke="var(--diagram-outline-color)" />
-			<line id="Line 7" x1="381.5" y1="271" x2="381.5" y2="286" stroke="var(--diagram-outline-color)" />
+			<line
+				id="Line 6"
+				x1="357.5"
+				y1="270"
+				x2="357.5"
+				y2="285"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 7"
+				x1="381.5"
+				y1="271"
+				x2="381.5"
+				y2="286"
+				stroke="var(--diagram-outline-color)"
+			/>
 			<path
 				id="Arrow 4_2"
 				d="M381 286L378.441 280.825L375.238 285.628L381 286ZM356.723 270.416L376.978 283.92L377.533 283.088L357.277 269.584L356.723 270.416Z"
@@ -735,15 +779,37 @@
 			/>
 		</g>
 		<g id="NOS2_Check_Valve">
-			<line id="Line 6_2" x1="357.5" y1="406" x2="357.5" y2="421" stroke="var(--diagram-outline-color)" />
-			<line id="Line 7_2" x1="381.5" y1="407" x2="381.5" y2="422" stroke="var(--diagram-outline-color)" />
+			<line
+				id="Line 6_2"
+				x1="357.5"
+				y1="406"
+				x2="357.5"
+				y2="421"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 7_2"
+				x1="381.5"
+				y1="407"
+				x2="381.5"
+				y2="422"
+				stroke="var(--diagram-outline-color)"
+			/>
 			<path
 				id="Arrow 4_3"
 				d="M381 422L378.441 416.825L375.238 421.628L381 422ZM356.723 406.416L376.978 419.92L377.533 419.088L357.277 405.584L356.723 406.416Z"
 				fill="var(--diagram-outline-color)"
 			/>
 		</g>
-		<line id="Line 8" x1="51" y1="314" x2="51" y2="277" stroke="var(--diagram-nos-color)" stroke-width="2" />
+		<line
+			id="Line 8"
+			x1="51"
+			y1="314"
+			x2="51"
+			y2="277"
+			stroke="var(--diagram-nos-color)"
+			stroke-width="2"
+		/>
 		<g id="PT1">
 			<g id="PT1_2">
 				<mask id="path-120-inside-45_7_22" fill="white">
@@ -758,7 +824,14 @@
 				/>
 			</g>
 			<circle id="Ellipse 1_3" cx="282.5" cy="212.5" r="29" stroke="var(--diagram-outline-color)" />
-			<line id="Line 3_3" x1="253" y1="212" x2="312" y2="212" stroke="var(--diagram-outline-color)" />
+			<line
+				id="Line 3_3"
+				x1="253"
+				y1="212"
+				x2="312"
+				y2="212"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="PT1Line" filter="url(#filter1_d_7_22)">
 			<line
@@ -795,8 +868,21 @@
 					mask="url(#path-126-inside-46_7_22)"
 				/>
 			</g>
-			<circle id="Ellipse 1_4" cx="1787.5" cy="738.5" r="29" stroke="var(--diagram-outline-color)" />
-			<line id="Line 3_4" x1="1758" y1="738" x2="1817" y2="738" stroke="var(--diagram-outline-color)" />
+			<circle
+				id="Ellipse 1_4"
+				cx="1787.5"
+				cy="738.5"
+				r="29"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 3_4"
+				x1="1758"
+				y1="738"
+				x2="1817"
+				y2="738"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="PT5">
 			<g id="PT5_2">
@@ -811,8 +897,21 @@
 					mask="url(#path-130-inside-47_7_22)"
 				/>
 			</g>
-			<circle id="Ellipse 1_5" cx="1783.5" cy="186.5" r="29" stroke="var(--diagram-outline-color)" />
-			<line id="Line 3_5" x1="1754" y1="186" x2="1813" y2="186" stroke="var(--diagram-outline-color)" />
+			<circle
+				id="Ellipse 1_5"
+				cx="1783.5"
+				cy="186.5"
+				r="29"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 3_5"
+				x1="1754"
+				y1="186"
+				x2="1813"
+				y2="186"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="PT1Line_3" filter="url(#filter3_d_7_22)">
 			<line
@@ -838,8 +937,21 @@
 					mask="url(#path-135-inside-48_7_22)"
 				/>
 			</g>
-			<circle id="Ellipse 1_6" cx="1734.5" cy="651.5" r="29" stroke="var(--diagram-outline-color)" />
-			<line id="Line 3_6" x1="1705" y1="651" x2="1764" y2="651" stroke="var(--diagram-outline-color)" />
+			<circle
+				id="Ellipse 1_6"
+				cx="1734.5"
+				cy="651.5"
+				r="29"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 3_6"
+				x1="1705"
+				y1="651"
+				x2="1764"
+				y2="651"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="PT1Line_4" filter="url(#filter4_d_7_22)">
 			<line
@@ -865,8 +977,21 @@
 					mask="url(#path-140-inside-49_7_22)"
 				/>
 			</g>
-			<circle id="Ellipse 1_7" cx="1833.5" cy="651.5" r="29" stroke="var(--diagram-outline-color)" />
-			<line id="Line 3_7" x1="1804" y1="651" x2="1863" y2="651" stroke="var(--diagram-outline-color)" />
+			<circle
+				id="Ellipse 1_7"
+				cx="1833.5"
+				cy="651.5"
+				r="29"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 3_7"
+				x1="1804"
+				y1="651"
+				x2="1863"
+				y2="651"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="TC5">
 			<g id="TC5_2">
@@ -881,8 +1006,21 @@
 					mask="url(#path-144-inside-50_7_22)"
 				/>
 			</g>
-			<circle id="Ellipse 1_8" cx="1324.5" cy="256.5" r="29" stroke="var(--diagram-outline-color)" />
-			<line id="Line 3_8" x1="1295" y1="256" x2="1354" y2="256" stroke="var(--diagram-outline-color)" />
+			<circle
+				id="Ellipse 1_8"
+				cx="1324.5"
+				cy="256.5"
+				r="29"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 3_8"
+				x1="1295"
+				y1="256"
+				x2="1354"
+				y2="256"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="TC6">
 			<g id="TC6_2">
@@ -897,8 +1035,21 @@
 					mask="url(#path-148-inside-51_7_22)"
 				/>
 			</g>
-			<circle id="Ellipse 1_9" cx="1324.5" cy="330.5" r="29" stroke="var(--diagram-outline-color)" />
-			<line id="Line 3_9" x1="1295" y1="330" x2="1354" y2="330" stroke="var(--diagram-outline-color)" />
+			<circle
+				id="Ellipse 1_9"
+				cx="1324.5"
+				cy="330.5"
+				r="29"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 3_9"
+				x1="1295"
+				y1="330"
+				x2="1354"
+				y2="330"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="PT1Line_5" filter="url(#filter5_d_7_22)">
 			<line
@@ -924,11 +1075,32 @@
 					mask="url(#path-153-inside-52_7_22)"
 				/>
 			</g>
-			<circle id="Ellipse 1_10" cx="282.5" cy="348.5" r="29" stroke="var(--diagram-outline-color)" />
-			<line id="Line 3_10" x1="253" y1="348" x2="312" y2="348" stroke="var(--diagram-outline-color)" />
+			<circle
+				id="Ellipse 1_10"
+				cx="282.5"
+				cy="348.5"
+				r="29"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 3_10"
+				x1="253"
+				y1="348"
+				x2="312"
+				y2="348"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="SV2_Check_Line">
-			<line id="Line 11" x1="51" y1="450" x2="51" y2="413" stroke="var(--diagram-nos-color)" stroke-width="2" />
+			<line
+				id="Line 11"
+				x1="51"
+				y1="450"
+				x2="51"
+				y2="413"
+				stroke="var(--diagram-nos-color)"
+				stroke-width="2"
+			/>
 			<path
 				id="Arrow 6"
 				d="M357 414L347 408.226V419.774L357 414ZM51 415H348V413H51V415Z"
@@ -1007,11 +1179,46 @@
 					mask="url(#path-166-inside-53_7_22)"
 				/>
 			</g>
-			<rect id="Rectangle 5" x="665.2" y="247.5" width="34" height="18" stroke="var(--diagram-outline-color)" />
-			<line id="Line 15" x1="692.2" y1="248" x2="692.2" y2="265" stroke="var(--diagram-outline-color)" />
-			<line id="Line 19" x1="672.2" y1="248" x2="672.2" y2="265" stroke="var(--diagram-outline-color)" />
-			<line id="Line 16" x1="672.7" y1="256.5" x2="691.7" y2="256.5" stroke="var(--diagram-outline-color)" />
-			<line id="Line 17" x1="682.2" y1="272.011" x2="682.2" y2="265" stroke="var(--diagram-outline-color)" />
+			<rect
+				id="Rectangle 5"
+				x="665.2"
+				y="247.5"
+				width="34"
+				height="18"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 15"
+				x1="692.2"
+				y1="248"
+				x2="692.2"
+				y2="265"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 19"
+				x1="672.2"
+				y1="248"
+				x2="672.2"
+				y2="265"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 16"
+				x1="672.7"
+				y1="256.5"
+				x2="691.7"
+				y2="256.5"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 17"
+				x1="682.2"
+				y1="272.011"
+				x2="682.2"
+				y2="265"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<path
 			id="Line 18"
@@ -1046,11 +1253,46 @@
 					mask="url(#path-177-inside-55_7_22)"
 				/>
 			</g>
-			<rect id="Rectangle 5_2" x="664.2" y="382.5" width="34" height="18" stroke="var(--diagram-outline-color)" />
-			<line id="Line 15_2" x1="691.2" y1="383" x2="691.2" y2="400" stroke="var(--diagram-outline-color)" />
-			<line id="Line 19_2" x1="671.2" y1="383" x2="671.2" y2="400" stroke="var(--diagram-outline-color)" />
-			<line id="Line 16_2" x1="671.7" y1="391.5" x2="690.7" y2="391.5" stroke="var(--diagram-outline-color)" />
-			<line id="Line 17_2" x1="681.2" y1="407.011" x2="681.2" y2="400" stroke="var(--diagram-outline-color)" />
+			<rect
+				id="Rectangle 5_2"
+				x="664.2"
+				y="382.5"
+				width="34"
+				height="18"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 15_2"
+				x1="691.2"
+				y1="383"
+				x2="691.2"
+				y2="400"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 19_2"
+				x1="671.2"
+				y1="383"
+				x2="671.2"
+				y2="400"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 16_2"
+				x1="671.7"
+				y1="391.5"
+				x2="690.7"
+				y2="391.5"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 17_2"
+				x1="681.2"
+				y1="407.011"
+				x2="681.2"
+				y2="400"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="PV3">
 			<mask id="path-184-inside-56_7_22" fill="white">
@@ -1091,11 +1333,46 @@
 					mask="url(#path-188-inside-58_7_22)"
 				/>
 			</g>
-			<rect id="Rectangle 5_3" x="665.2" y="547.5" width="34" height="18" stroke="var(--diagram-outline-color)" />
-			<line id="Line 15_3" x1="692.2" y1="548" x2="692.2" y2="565" stroke="var(--diagram-outline-color)" />
-			<line id="Line 19_3" x1="672.2" y1="548" x2="672.2" y2="565" stroke="var(--diagram-outline-color)" />
-			<line id="Line 16_3" x1="672.7" y1="556.5" x2="691.7" y2="556.5" stroke="var(--diagram-outline-color)" />
-			<line id="Line 17_3" x1="682.2" y1="572.011" x2="682.2" y2="565" stroke="var(--diagram-outline-color)" />
+			<rect
+				id="Rectangle 5_3"
+				x="665.2"
+				y="547.5"
+				width="34"
+				height="18"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 15_3"
+				x1="692.2"
+				y1="548"
+				x2="692.2"
+				y2="565"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 19_3"
+				x1="672.2"
+				y1="548"
+				x2="672.2"
+				y2="565"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 16_3"
+				x1="672.7"
+				y1="556.5"
+				x2="691.7"
+				y2="556.5"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 17_3"
+				x1="682.2"
+				y1="572.011"
+				x2="682.2"
+				y2="565"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="PV4_3">
 			<g id="Union_4">
@@ -1112,11 +1389,46 @@
 					mask="url(#path-195-inside-59_7_22)"
 				/>
 			</g>
-			<rect id="Rectangle 5_4" x="889.2" y="296.5" width="34" height="18" stroke="var(--diagram-outline-color)" />
-			<line id="Line 15_4" x1="916.2" y1="297" x2="916.2" y2="314" stroke="var(--diagram-outline-color)" />
-			<line id="Line 19_4" x1="896.2" y1="297" x2="896.2" y2="314" stroke="var(--diagram-outline-color)" />
-			<line id="Line 16_4" x1="896.7" y1="305.5" x2="915.7" y2="305.5" stroke="var(--diagram-outline-color)" />
-			<line id="Line 17_4" x1="906.2" y1="321.011" x2="906.2" y2="314" stroke="var(--diagram-outline-color)" />
+			<rect
+				id="Rectangle 5_4"
+				x="889.2"
+				y="296.5"
+				width="34"
+				height="18"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 15_4"
+				x1="916.2"
+				y1="297"
+				x2="916.2"
+				y2="314"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 19_4"
+				x1="896.2"
+				y1="297"
+				x2="896.2"
+				y2="314"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 16_4"
+				x1="896.7"
+				y1="305.5"
+				x2="915.7"
+				y2="305.5"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 17_4"
+				x1="906.2"
+				y1="321.011"
+				x2="906.2"
+				y2="314"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<path
 			id="NOS2_Check_PV2_Line"
@@ -1134,8 +1446,22 @@
 			fill="var(--diagram-fill-color)"
 		/>
 		<g id="N2 Check Valve">
-			<line id="Line 6_3" x1="361.5" y1="571" x2="361.5" y2="586" stroke="var(--diagram-outline-color)" />
-			<line id="Line 7_3" x1="385.5" y1="572" x2="385.5" y2="587" stroke="var(--diagram-outline-color)" />
+			<line
+				id="Line 6_3"
+				x1="361.5"
+				y1="571"
+				x2="361.5"
+				y2="586"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 7_3"
+				x1="385.5"
+				y1="572"
+				x2="385.5"
+				y2="587"
+				stroke="var(--diagram-outline-color)"
+			/>
 			<path
 				id="Arrow 4_4"
 				d="M385 587L382.441 581.825L379.238 586.628L385 587ZM360.723 571.416L380.978 584.92L381.533 584.088L361.277 570.584L360.723 571.416Z"
@@ -1155,8 +1481,21 @@
 					mask="url(#path-208-inside-60_7_22)"
 				/>
 			</g>
-			<circle id="Ellipse 1_11" cx="286.5" cy="513.5" r="29" stroke="var(--diagram-outline-color)" />
-			<line id="Line 3_11" x1="257" y1="513" x2="316" y2="513" stroke="var(--diagram-outline-color)" />
+			<circle
+				id="Ellipse 1_11"
+				cx="286.5"
+				cy="513.5"
+				r="29"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 3_11"
+				x1="257"
+				y1="513"
+				x2="316"
+				y2="513"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<path
 			id="N2_check_arrow"
@@ -1212,7 +1551,15 @@
 				mask="url(#path-220-inside-61_7_22)"
 			/>
 		</g>
-		<line id="Line 23" x1="463" y1="71" x2="469" y2="71" stroke="var(--diagram-nos-color)" stroke-width="2" />
+		<line
+			id="Line 23"
+			x1="463"
+			y1="71"
+			x2="469"
+			y2="71"
+			stroke="var(--diagram-nos-color)"
+			stroke-width="2"
+		/>
 		<g id="PSV2">
 			<path
 				id="Vector_6"
@@ -1309,7 +1656,15 @@
 				mask="url(#path-235-inside-65_7_22)"
 			/>
 		</g>
-		<line id="Line 24" x1="557" y1="71" x2="563" y2="71" stroke="var(--diagram-nos-color)" stroke-width="2" />
+		<line
+			id="Line 24"
+			x1="557"
+			y1="71"
+			x2="563"
+			y2="71"
+			stroke="var(--diagram-nos-color)"
+			stroke-width="2"
+		/>
 		<path
 			id="Arrow 12"
 			d="M506.005 86L500.232 95.9998L511.779 96.0002L506.005 86ZM507 273L507.005 95L505.005 95L505 273L507 273Z"
@@ -1352,13 +1707,29 @@
 			d="M767 55L761.226 65H772.774L767 55ZM768 73.0528V64H766V73.0528H768Z"
 			fill="var(--diagram-fill-color)"
 		/>
-		<line id="Line 26" x1="506" y1="415.004" x2="506" y2="283" stroke="var(--diagram-nos-color)" stroke-width="2" />
+		<line
+			id="Line 26"
+			x1="506"
+			y1="415.004"
+			x2="506"
+			y2="283"
+			stroke="var(--diagram-nos-color)"
+			stroke-width="2"
+		/>
 		<path
 			id="Arrow 17"
 			d="M542.005 86L536.232 95.9998L547.779 96.0002L542.005 86ZM543 273L543.005 95L541.005 95L541 273L543 273Z"
 			fill="var(--diagram-nos-color)"
 		/>
-		<line id="Line 27" x1="542" y1="415.004" x2="542" y2="283" stroke="var(--diagram-nos-color)" stroke-width="2" />
+		<line
+			id="Line 27"
+			x1="542"
+			y1="415.004"
+			x2="542"
+			y2="283"
+			stroke="var(--diagram-nos-color)"
+			stroke-width="2"
+		/>
 		<g id="REG3_2">
 			<g id="Ellipse 2_4">
 				<mask id="path-249-inside-67_7_22" fill="white">
@@ -1381,7 +1752,14 @@
 				stroke-miterlimit="10"
 				stroke-linejoin="round"
 			/>
-			<line id="Line 25" x1="158.5" y1="570" x2="158.5" y2="580" stroke="var(--diagram-outline-color)" />
+			<line
+				id="Line 25"
+				x1="158.5"
+				y1="570"
+				x2="158.5"
+				y2="580"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="Group 22">
 			<g id="Ellipse 2_5">
@@ -1405,7 +1783,14 @@
 				stroke-miterlimit="10"
 				stroke-linejoin="round"
 			/>
-			<line id="Line 25_2" x1="550" y1="698.501" x2="560" y2="698.501" stroke="var(--diagram-outline-color)" />
+			<line
+				id="Line 25_2"
+				x1="550"
+				y1="698.501"
+				x2="560"
+				y2="698.501"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="Group 27">
 			<g id="Ellipse 2_6">
@@ -1608,7 +1993,15 @@
 				stroke-width="0.8"
 			/>
 		</g>
-		<line id="Line 39" x1="1189" y1="348" x2="1206" y2="348" stroke="var(--diagram-fill-color)" stroke-width="2" />
+		<line
+			id="Line 39"
+			x1="1189"
+			y1="348"
+			x2="1206"
+			y2="348"
+			stroke="var(--diagram-fill-color)"
+			stroke-width="2"
+		/>
 		<path
 			id="Arrow 33"
 			d="M1207 54L1201.23 64H1212.77L1207 54ZM1208 349V63H1206V349H1208Z"
@@ -1746,8 +2139,21 @@
 					mask="url(#path-297-inside-73_7_22)"
 				/>
 			</g>
-			<circle id="Ellipse 1_12" cx="806.5" cy="348.5" r="29" stroke="var(--diagram-outline-color)" />
-			<line id="Line 3_12" x1="777" y1="348" x2="836" y2="348" stroke="var(--diagram-outline-color)" />
+			<circle
+				id="Ellipse 1_12"
+				cx="806.5"
+				cy="348.5"
+				r="29"
+				stroke="var(--diagram-outline-color)"
+			/>
+			<line
+				id="Line 3_12"
+				x1="777"
+				y1="348"
+				x2="836"
+				y2="348"
+				stroke="var(--diagram-outline-color)"
+			/>
 		</g>
 		<g id="Line 35" filter="url(#filter8_d_7_22)">
 			<line
@@ -1780,7 +2186,15 @@
 			stroke-width="2"
 			stroke-dasharray="4 4"
 		/>
-		<line id="Line 40" x1="925" y1="828" x2="925" y2="694" stroke="var(--diagram-insul-color)" stroke-width="2" />
+		<line
+			id="Line 40"
+			x1="925"
+			y1="828"
+			x2="925"
+			y2="694"
+			stroke="var(--diagram-insul-color)"
+			stroke-width="2"
+		/>
 		<path
 			id="Arrow 36"
 			d="M1094 661L1084 655.226V666.774L1094 661ZM1064 662H1085V660H1064V662Z"
@@ -1813,7 +2227,7 @@
 		/>
 		<path
 			id="Arrow 57"
-			d="M1598.98 344.5L1608.98 350.274V338.726L1598.98 344.5ZM1700.02 343.5H1607.98V345.5H1700.02V343.5Z"
+			d="M1598.98 455.5L1608.98 461.274V449.726L1598.98 455.5ZM1700.02 454.5H1607.98V456.5H1700.02V454.5Z"
 			fill="var(--diagram-pv-color)"
 		/>
 		<path
@@ -1919,8 +2333,24 @@
 			d="M1150 577L1159.98 582.814L1160.02 571.268L1150 577ZM1394 577L1159 576.037L1159 578.037L1394 579L1394 577Z"
 			fill="var(--diagram-insul-color)"
 		/>
-		<line id="Line 41" x1="1063" y1="823" x2="1063" y2="492" stroke="var(--diagram-insul-color)" stroke-width="2" />
-		<line id="Line 42" x1="1500" y1="738" x2="1500" y2="254" stroke="var(--diagram-insul-color)" stroke-width="2" />
+		<line
+			id="Line 41"
+			x1="1063"
+			y1="823"
+			x2="1063"
+			y2="492"
+			stroke="var(--diagram-insul-color)"
+			stroke-width="2"
+		/>
+		<line
+			id="Line 42"
+			x1="1500"
+			y1="738"
+			x2="1500"
+			y2="254"
+			stroke="var(--diagram-insul-color)"
+			stroke-width="2"
+		/>
 		<line
 			id="Line 43"
 			x1="1519"
@@ -1930,7 +2360,15 @@
 			stroke="var(--diagram-insul-color)"
 			stroke-width="2"
 		/>
-		<line id="Line 38" x1="933" y1="327" x2="984" y2="327" stroke="var(--diagram-fill-color)" stroke-width="2" />
+		<line
+			id="Line 38"
+			x1="933"
+			y1="327"
+			x2="984"
+			y2="327"
+			stroke="var(--diagram-fill-color)"
+			stroke-width="2"
+		/>
 		<g id="SOL5_sym">
 			<path
 				id="Vector_20"
@@ -2145,8 +2583,24 @@
 				stroke="var(--diagram-outline-color)"
 				stroke-width="2"
 			/>
-			<line id="Line 44" x1="1411" y1="411" x2="1411" y2="389" stroke="var(--diagram-outline-color)" stroke-width="2" />
-			<line id="Line 45" x1="1405" y1="389" x2="1417" y2="389" stroke="var(--diagram-outline-color)" stroke-width="2" />
+			<line
+				id="Line 44"
+				x1="1411"
+				y1="411"
+				x2="1411"
+				y2="389"
+				stroke="var(--diagram-outline-color)"
+				stroke-width="2"
+			/>
+			<line
+				id="Line 45"
+				x1="1405"
+				y1="389"
+				x2="1417"
+				y2="389"
+				stroke="var(--diagram-outline-color)"
+				stroke-width="2"
+			/>
 		</g>
 		<g id="Group 36">
 			<rect
@@ -2159,8 +2613,24 @@
 				stroke="var(--diagram-outline-color)"
 				stroke-width="2"
 			/>
-			<line id="Line 48" x1="1471" y1="255" x2="1449" y2="255" stroke="var(--diagram-outline-color)" stroke-width="2" />
-			<line id="Line 49" x1="1449" y1="261" x2="1449" y2="249" stroke="var(--diagram-outline-color)" stroke-width="2" />
+			<line
+				id="Line 48"
+				x1="1471"
+				y1="255"
+				x2="1449"
+				y2="255"
+				stroke="var(--diagram-outline-color)"
+				stroke-width="2"
+			/>
+			<line
+				id="Line 49"
+				x1="1449"
+				y1="261"
+				x2="1449"
+				y2="249"
+				stroke="var(--diagram-outline-color)"
+				stroke-width="2"
+			/>
 		</g>
 		<g id="Group 37">
 			<rect
@@ -2207,8 +2677,24 @@
 			d="M1406.5 417.999L1400.73 427.999H1412.27L1406.5 417.999ZM1407.5 662.001V426.999H1405.5V662.001H1407.5Z"
 			fill="var(--diagram-insul-color)"
 		/>
-		<line id="Line 50" x1="1464" y1="231" x2="1520" y2="231" stroke="var(--diagram-insul-color)" stroke-width="2" />
-		<line id="Line 51" x1="1462" y1="315" x2="1518" y2="315" stroke="var(--diagram-insul-color)" stroke-width="2" />
+		<line
+			id="Line 50"
+			x1="1464"
+			y1="231"
+			x2="1520"
+			y2="231"
+			stroke="var(--diagram-insul-color)"
+			stroke-width="2"
+		/>
+		<line
+			id="Line 51"
+			x1="1462"
+			y1="315"
+			x2="1518"
+			y2="315"
+			stroke="var(--diagram-insul-color)"
+			stroke-width="2"
+		/>
 		<rect
 			id="IGN Border"
 			x="77"
@@ -2287,7 +2773,14 @@
 			stroke="var(--diagram-outline-color)"
 			stroke-width="2"
 		/>
-		<rect id="Rectangle 4" x="1700.5" y="300.5" width="135" height="250" stroke="var(--diagram-outline-color)" />
+		<rect
+			id="Rectangle 4"
+			x="1700.5"
+			y="387.5"
+			width="135"
+			height="150"
+			stroke="var(--diagram-outline-color)"
+		/>
 		<g id="Pressure Vessel">
 			<mask id="path-389-inside-83_7_22" fill="white">
 				<path
@@ -2300,7 +2793,14 @@
 				mask="url(#path-389-inside-83_7_22)"
 			/>
 		</g>
-		<rect id="Rectangle 13" x="1707.5" y="804.5" width="157" height="49" stroke="var(--diagram-outline-color)" />
+		<rect
+			id="Rectangle 13"
+			x="1707.5"
+			y="804.5"
+			width="157"
+			height="49"
+			stroke="var(--diagram-outline-color)"
+		/>
 		<g id="Injector Bulkhead">
 			<mask id="path-392-inside-84_7_22" fill="white">
 				<path
@@ -2319,7 +2819,7 @@
 				y1="-0.5"
 				x2="20"
 				y2="-0.5"
-				transform="matrix(0 -1 -1 0 1598 329)"
+				transform="matrix(0 -1 -1 0 1598 440)"
 				stroke="var(--diagram-pv-color)"
 			/>
 			<line
@@ -2327,7 +2827,7 @@
 				y1="-0.5"
 				x2="14"
 				y2="-0.5"
-				transform="matrix(0 -1 -1 0 1595 326)"
+				transform="matrix(0 -1 -1 0 1595 437)"
 				stroke="var(--diagram-pv-color)"
 			/>
 			<line
@@ -2335,10 +2835,11 @@
 				y1="-0.5"
 				x2="8"
 				y2="-0.5"
-				transform="matrix(0 -1 -1 0 1592 323)"
+				transform="matrix(0 -1 -1 0 1592 434)"
 				stroke="var(--diagram-pv-color)"
 			/>
 		</g>
+		<text class="diagram-label" x="1602" y="402">VENT</text>
 		<g id="DRAIN">
 			<mask id="path-397-inside-85_7_22" fill="white">
 				<path
@@ -2393,21 +2894,61 @@
 			fill="var(--diagram-nos-color)"
 		/>
 		<g id="Added_TC_Upper_PV_1" class="added-sensor">
-			<polyline points="1700,300 1665,300 1665,232" fill="none" stroke-width="2" stroke-dasharray="4 4" />
+			<polyline
+				points="1665,232 1665,360 1700.5,360 1700.5,387.5"
+				fill="none"
+				stroke-width="2"
+				stroke-dasharray="4 4"
+			/>
 			<circle cx="1665" cy="210" r="22" fill="none" />
 			<line x1="1643" y1="210" x2="1687" y2="210" />
 			<text x="1665" y="201">TC4</text>
 		</g>
-		<text class="diagram-label" x="1768" y="425">Pressure Vessel</text>
+		<line
+			id="PT5_to_PV"
+			x1="1783.5"
+			y1="215.5"
+			x2="1783.5"
+			y2="387.5"
+			stroke="var(--diagram-outline-color)"
+			stroke-width="2"
+			stroke-dasharray="5 5"
+		/>
+		<text class="diagram-label" x="1768" y="465">Pressure Vessel</text>
+		<line
+			id="PT6_to_PV"
+			x1="1744.5"
+			y1="622.5"
+			x2="1744.5"
+			y2="537.5"
+			stroke="var(--diagram-outline-color)"
+			stroke-width="2"
+			stroke-dasharray="5 5"
+		/>
+		<line
+			id="TC3_to_PV"
+			x1="1808.5"
+			y1="622.5"
+			x2="1808.5"
+			y2="537.5"
+			stroke="var(--diagram-outline-color)"
+			stroke-width="2"
+			stroke-dasharray="5 5"
+		/>
 		<g id="Added_TC_Upper_PV_Heated" class="added-sensor">
-			<line x1="1720" y1="300" x2="1720" y2="268" stroke-width="2" stroke-dasharray="4 4" />
+			<line x1="1720" y1="387.5" x2="1720" y2="268" stroke-width="2" stroke-dasharray="4 4" />
 			<line x1="1720" y1="244" x2="1720" y2="217" stroke-width="2" stroke-dasharray="4 4" />
 			<circle cx="1720" cy="195" r="22" fill="none" />
 			<line x1="1698" y1="195" x2="1742" y2="195" />
 			<text x="1720" y="186">TC7</text>
 		</g>
 		<g id="Added_TC_Upper_PV_3" class="added-sensor">
-			<polyline points="1835,300 1870,300 1870,232" fill="none" stroke-width="2" stroke-dasharray="4 4" />
+			<polyline
+				points="1870,232 1870,360 1835.5,360 1835.5,387.5"
+				fill="none"
+				stroke-width="2"
+				stroke-dasharray="4 4"
+			/>
 			<circle cx="1870" cy="210" r="22" fill="none" />
 			<line x1="1848" y1="210" x2="1892" y2="210" />
 			<text x="1870" y="201">TC8</text>
@@ -2419,7 +2960,12 @@
 			<text x="1724" y="729">TC9</text>
 		</g>
 		<g id="Added_TC_Lower_PV_Heated" class="added-sensor">
-			<polyline points="1835,550 1890,550 1890,590" fill="none" stroke-width="2" stroke-dasharray="4 4" />
+			<polyline
+				points="1835,550 1890,550 1890,590"
+				fill="none"
+				stroke-width="2"
+				stroke-dasharray="4 4"
+			/>
 			<line x1="1890" y1="612" x2="1890" y2="650" stroke-width="2" stroke-dasharray="4 4" />
 			<circle cx="1890" cy="672" r="22" fill="none" />
 			<line x1="1868" y1="672" x2="1912" y2="672" />
@@ -2646,3 +3192,42 @@
 		</filter>
 	</defs>
 </svg>
+
+<style>
+	svg * {
+		transition: all 0.15s ease;
+	}
+
+	.added-sensor text,
+	.added-heater text {
+		fill: var(--diagram-outline-color);
+		font-family: Quicksand, sans-serif;
+		font-size: 13px;
+		text-anchor: middle;
+		dominant-baseline: middle;
+	}
+
+	.added-sensor circle,
+	.added-sensor line,
+	.added-sensor polyline,
+	.added-heater rect,
+	.added-heater path {
+		stroke: var(--diagram-outline-color);
+	}
+
+	#Pressure\ Vessel {
+		display: none;
+	}
+
+	#VENT {
+		display: none;
+	}
+
+	.diagram-label {
+		fill: var(--diagram-outline-color);
+		font-family: Quicksand, sans-serif;
+		font-size: 15px;
+		text-anchor: middle;
+		dominant-baseline: middle;
+	}
+</style>
