@@ -20,7 +20,7 @@ class HeartbeatHandler:
         self.timeout = timeout
         self.timer = None
         self.running = False
-        self.dmb_thread = None
+        self.fcb_thread = None
 
         logger.success(f"Successfully started {thread_name} thread")
 
@@ -45,19 +45,19 @@ class HeartbeatHandler:
 
     def stop(self):
         self.running = False
-        if self.dmb_thread is not None:
-            self.dmb_thread.join()
-            self.dmb_thread = None
+        if self.fcb_thread is not None:
+            self.fcb_thread.join()
+            self.fcb_thread = None
         if self.timer is not None:
             self.timer.cancel()
 
     def start(self):
         self.running = True
-        self.dmb_thread = threading.Thread(target=self.dmb_heartbeat_send)
-        self.dmb_thread.start()
+        self.fcb_thread = threading.Thread(target=self.fcb_heartbeat_send)
+        self.fcb_thread.start()
         self.reset_timer()
 
-    def dmb_heartbeat_send(self):
+    def fcb_heartbeat_send(self):
         while self.running:
             msg = ControlMessage()
             msg.source = ProtoCore.NODE_FSB
@@ -79,7 +79,7 @@ class HeartbeatHandler:
 
 def heartbeat_thread(thread_name: str, heartbeat_workq: mp.Queue, message_handler_workq: mp.Queue):
     """
-    The main loop of the heartbeat handler. This function will process the messages from the workq and spawn the dmb heartbeat thread.
+    The main loop of the heartbeat handler. This function will process the messages from the workq and spawn the fcb heartbeat thread.
     """
 
     # 20 minutes

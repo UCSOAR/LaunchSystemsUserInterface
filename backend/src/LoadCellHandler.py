@@ -247,7 +247,7 @@ def process_workq_message(message: WorkQ_Message, load_cells: Dict[str, LoadCell
 
         db_load_cell_package = {}
         db_load_cell_package["source"] = "LOADCELL"
-        db_load_cell_package["target"] = "RCU"
+        db_load_cell_package["target"] = "FSB"
         if "LAUNCHRAIL" in load_cell_names:
             rocket_mass = load_cells["LAUNCHRAIL"].consume_incoming_voltage(voltages[0])
             db_load_cell_package["launchRailLoadCell"] = {}

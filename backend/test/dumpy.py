@@ -50,8 +50,8 @@ def combustion_control_write():
     )
 
 
-def dmb_pressure_write():
-    pb.collection("DmbPressure").create(
+def fcb_pressure_write():
+    pb.collection("FcbPressure").create(
         {
             "upper_pv_pressure": random_int(),
         }
@@ -132,8 +132,8 @@ def pbb_temperature_write():
     )
 
 
-def rcu_pressure_write():
-    pb.collection("RcuPressure").create(
+def fsb_pressure_write():
+    pb.collection("FsbPressure").create(
         {
             "pt1_pressure": random_int(),
             "pt2_pressure": random_int(),
@@ -143,8 +143,8 @@ def rcu_pressure_write():
     )
 
 
-def rcu_temperature_write():
-    pb.collection("RcuTemperature").create(
+def fsb_temperature_write():
+    pb.collection("FsbTemperature").create(
         {
             "tc1_temperature": random_int(),
             "tc2_temperature": random_int(),
@@ -173,8 +173,8 @@ def relay_status_write():
     )
 
 
-def sob_temperature_write():
-    pb.collection("SobTemperature").create(
+def lrb_temperature_write():
+    pb.collection("LrbTemperature").create(
         {
             "tc1_temperature": random_int(),
             "tc2_temperature": random_int(),
@@ -187,7 +187,7 @@ functions = [
     baro_write,
     battery_write,
     combustion_control_write,
-    dmb_pressure_write,
+    fcb_pressure_write,
     gps_write,
     imu_write,
     lr_loadcell_write,
@@ -195,10 +195,10 @@ functions = [
     pad_box_write,
     pbb_pressure_write,
     pbb_temperature_write,
-    rcu_pressure_write,
-    rcu_temperature_write,
+    fsb_pressure_write,
+    fsb_temperature_write,
     relay_status_write,
-    sob_temperature_write,
+    lrb_temperature_write,
 ]
 
 # Create a ThreadPool

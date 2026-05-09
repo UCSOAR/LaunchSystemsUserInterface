@@ -13,8 +13,8 @@ while 1:
     i += 1
     client.collection('CommandMessage').create({
         "command_param": 0,
-        "target": "DMB",
-        "command": "RSC_OPEN_VENT",
+        "target": "FCB",
+        "command": "RSC_GOTO_TEST",
         "source_sequence_num": i,
     })
     time.sleep(1)

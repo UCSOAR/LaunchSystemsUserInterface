@@ -42,7 +42,7 @@ class SerialHandler():
         """
         This thread class creates threads to handle 
         incoming and outgoing serial messages over 
-        the radio to the DMB and the uart to RCU.
+        the radio to the FCB and the uart to FSB.
 
         Args:
             thread_name (str):
@@ -102,6 +102,7 @@ class SerialHandler():
         try:
             msgId, data = Codec.Decode(message[:-1], len(message) - 1)
         except cobs.DecodeError:
+            logger.warning(f"Got message: {message}")
             logger.warning(f"Invalid cobs message from {self.port}")
             return
         
