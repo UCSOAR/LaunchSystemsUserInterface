@@ -3,10 +3,13 @@ import multiprocessing as mp
 import threading
 import time
 # Project specific imports ========================================================================
-from proto.Python.ControlMessage_pb2 import ControlMessage, Heartbeat
+from src.support.ProtoPath import ensure_proto_python_path
+ensure_proto_python_path()
+
+from ControlMessage_pb2 import ControlMessage, Heartbeat
 from src.support.CommonLogger import logger
 from src.ThreadManager import THREAD_MESSAGE_HEARTBEAT, THREAD_MESSAGE_HEARTBEAT_SERIAL, THREAD_MESSAGE_SERIAL_WRITE, WorkQ_Message
-import proto.Python.CoreProto_pb2 as ProtoCore
+import CoreProto_pb2 as ProtoCore
 
 class HeartbeatHandler:
     def __init__(self, thread_name: str, thread_workq: mp.Queue, message_handler_workq: mp.Queue, timeout: int):

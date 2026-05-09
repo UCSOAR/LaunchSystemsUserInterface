@@ -12,12 +12,14 @@ from google.protobuf.json_format import MessageToJson
 
 dirname, _ = os.path.split(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(dirname.split("backend", 1)[0], 'backend'))
-sys.path.insert(0, os.path.join(dirname.split("backend", 1)[0], 'proto/Python'))
-import proto.Python.CoreProto_pb2 as ProtoCore
-import proto.Python.ControlMessage_pb2 as ProtoCtrl
-import proto.Python.CommandMessage_pb2 as ProtoCmd
-import proto.Python.TelemetryMessage_pb2 as ProtoTele
-import proto.Python.CoreProto_pb2 as Core
+from src.support.ProtoPath import ensure_proto_python_path
+ensure_proto_python_path()
+
+import CoreProto_pb2 as ProtoCore
+import ControlMessage_pb2 as ProtoCtrl
+import CommandMessage_pb2 as ProtoCmd
+import TelemetryMessage_pb2 as ProtoTele
+import CoreProto_pb2 as Core
 
 from src.Utils import Utils as utl
 

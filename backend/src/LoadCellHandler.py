@@ -7,9 +7,12 @@ import multiprocessing as mp
 import time
 
 # Project specific imports ========================================================================
+from src.support.ProtoPath import ensure_proto_python_path
+ensure_proto_python_path()
+
 from src.ThreadManager import THREAD_MESSAGE_DB_WRITE, THREAD_MESSAGE_KILL, THREAD_MESSAGE_LOAD_CELL_COMMAND, THREAD_MESSAGE_LOAD_CELL_SLOPE, THREAD_MESSAGE_LOAD_CELL_VOLTAGE, THREAD_MESSAGE_REQUEST_LOAD_CELL_SLOPE, THREAD_MESSAGE_STORE_LOAD_CELL_SLOPE, WorkQ_Message
 from src.support.CommonLogger import logger
-import proto.Python.CoreProto_pb2 as ProtoCore
+import CoreProto_pb2 as ProtoCore
 
 
 # Class Definitions ===============================================================================

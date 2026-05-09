@@ -10,9 +10,12 @@ from cobs import cobs   # pip install cobs
 import google.protobuf.message as Message
 
 # Project specific imports ========================================================================
-import proto.Python.CoreProto_pb2 as ProtoCore
-import proto.Python.TelemetryMessage_pb2 as TelemetryProto
-import proto.Python.ControlMessage_pb2 as ControlProto
+from src.support.ProtoPath import ensure_proto_python_path
+ensure_proto_python_path()
+
+import CoreProto_pb2 as ProtoCore
+import TelemetryMessage_pb2 as TelemetryProto
+import ControlMessage_pb2 as ControlProto
 
 from src.support.Codec import Codec
 from src.support.ProtobufParser import ProtobufParser

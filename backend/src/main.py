@@ -5,8 +5,10 @@ import multiprocessing as mp
 
 # Project specific imports ========================================================================
 dirname, _ = os.path.split(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(dirname.split("backend", 1)[0], 'backend', 'proto/Python'))
 sys.path.insert(0, os.path.join(dirname.split("backend", 1)[0], 'backend'))
+
+from src.support.ProtoPath import ensure_proto_python_path
+ensure_proto_python_path()
 
 from src.support.CommonLogger import logger
 from src.DatabaseHandler import database_thread

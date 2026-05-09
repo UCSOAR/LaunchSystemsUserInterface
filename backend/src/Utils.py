@@ -2,7 +2,10 @@
 # BRIEF: This file contains generic utility functions for the backend
 
 # Project specific imports ========================================================================
-import proto.Python.CoreProto_pb2 as ProtoCore
+from src.support.ProtoPath import ensure_proto_python_path
+ensure_proto_python_path()
+
+import CoreProto_pb2 as ProtoCore
 
 # Class Definitions ===============================================================================
 class Utils:
