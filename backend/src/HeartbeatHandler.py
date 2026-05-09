@@ -39,7 +39,7 @@ class HeartbeatHandler:
                 HeartbeatHandler.thread_name,
                 'radio',
                 THREAD_MESSAGE_SERIAL_WRITE,
-                ("RSC_ANY_TO_ABORT", "NODE_DMB", 0, 0,)
+                ("RSC_ANY_TO_ABORT", "NODE_FCB", 0, 0,)
             )
         )
 
@@ -60,8 +60,8 @@ class HeartbeatHandler:
     def dmb_heartbeat_send(self):
         while self.running:
             msg = ControlMessage()
-            msg.source = ProtoCore.NODE_RCU
-            msg.target = ProtoCore.NODE_DMB
+            msg.source = ProtoCore.NODE_FSB
+            msg.target = ProtoCore.NODE_FCB
             hbMsg = Heartbeat()
             hbMsg.hb_response_sequence_num = 1234
             msg.hb.CopyFrom(hbMsg)

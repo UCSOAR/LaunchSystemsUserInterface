@@ -129,7 +129,7 @@ class SerialHandler():
             logger.warning(f"Unable to decode telemetry message: {data}")
             return
         # Ensure the message is intended for us
-        if received_message.target == ProtoCore.NODE_RCU or received_message.target == ProtoCore.NODE_ANY:
+        if received_message.target == ProtoCore.NODE_FSB or received_message.target == ProtoCore.NODE_ANY:
             telemetry_message_type = received_message.WhichOneof('message')
             logger.debug(f"Received {telemetry_message_type} from {utl.get_node_from_enum(received_message.source)}")
         else:
@@ -178,7 +178,7 @@ class SerialHandler():
             logger.warning(f"Unable to decode control message: {data}")
             return
         # Ensure the message is intended for us
-        if received_message.target == ProtoCore.NODE_RCU or received_message.target == ProtoCore.NODE_ANY:
+        if received_message.target == ProtoCore.NODE_FSB or received_message.target == ProtoCore.NODE_ANY:
             control_message_type = received_message.WhichOneof('message')
             logger.debug(f"Received {control_message_type} from {utl.get_node_from_enum(received_message.source)}")
         else:
@@ -226,9 +226,9 @@ class SerialHandler():
 
         encBuf = Codec.Encode(buf, len(buf), ProtoCore.MessageID.MSG_COMMAND)
         target_enum = utl.get_node_from_str(target)
-        if (target_enum == ProtoCore.NODE_DMB or target_enum == ProtoCore.Node.NODE_PBB) and self.port == RADIO_SERIAL_PORT:
+        if (target_enum == ProtoCore.NODE_FCB or target_enum == ProtoCore.Node.NODE_PBB) and self.port == RADIO_SERIAL_PORT:
             self.serial_port.write(encBuf)
-        if (target_enum ==  ProtoCore.NODE_RCU or target_enum ==  ProtoCore.Node.NODE_SOB) and self.port == UART_SERIAL_PORT:
+        if (target_enum ==  ProtoCore.NODE_FSB or target_enum ==  ProtoCore.Node.NODE_LRB) and self.port == UART_SERIAL_PORT:
             self.serial_port.write(encBuf)
 
         return True

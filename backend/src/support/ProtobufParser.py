@@ -110,23 +110,23 @@ class ProtobufParser:
         """
         target_enum = utl.get_node_from_str(target)
         command_message = ProtoCmd.CommandMessage()
-        command_message.source = ProtoCore.NODE_RCU
+        command_message.source = ProtoCore.NODE_FSB
         command_message.source_sequence_num = source_sequence_number
 
-        if target_enum == ProtoCore.NODE_DMB:
-            command_message.target = ProtoCore.NODE_DMB
+        if target_enum == ProtoCore.NODE_FCB:
+            command_message.target = ProtoCore.NODE_FCB
             command_enum = utl.get_command_from_str(ProtoCmd.DmbCommand.Command, command)
             command_message.dmb_command.CopyFrom(ProtoCmd.DmbCommand(command_enum=command_enum))
         elif target_enum == ProtoCore.NODE_PBB:
             command_message.target = ProtoCore.NODE_PBB
             command_enum = utl.get_command_from_str(ProtoCmd.PbbCommand.Command, command)
             command_message.pbb_command.CopyFrom(ProtoCmd.PbbCommand(command_enum=command_enum))
-        elif target_enum == ProtoCore.NODE_SOB:
-            command_message.target = ProtoCore.NODE_SOB
+        elif target_enum == ProtoCore.NODE_LRB:
+            command_message.target = ProtoCore.NODE_LRB
             command_enum = utl.get_command_from_str(ProtoCmd.SobCommand.Command, command)
             command_message.sob_command.CopyFrom(ProtoCmd.SobCommand(command_enum=command_enum, command_param=command_param))
-        elif target_enum == ProtoCore.NODE_RCU:
-            command_message.target = ProtoCore.NODE_RCU
+        elif target_enum == ProtoCore.NODE_FSB:
+            command_message.target = ProtoCore.NODE_FSB
             command_enum = utl.get_command_from_str(ProtoCmd.RcuCommand.Command, command)
             command_message.rcu_command.CopyFrom(ProtoCmd.RcuCommand(command_enum=command_enum, command_param=command_param))
         else:
@@ -162,8 +162,8 @@ def generate_gps_serial():
     # Wrap in TelemetryMessage
     telemetry_message = ProtoTele.TelemetryMessage()
     telemetry_message.gps.CopyFrom(gps_message)
-    telemetry_message.source = Core.NODE_DMB
-    telemetry_message.target = Core.NODE_RCU
+    telemetry_message.source = Core.NODE_FCB
+    telemetry_message.target = Core.NODE_FSB
 
     # Serialize the message
     serialized_message = telemetry_message.SerializeToString()

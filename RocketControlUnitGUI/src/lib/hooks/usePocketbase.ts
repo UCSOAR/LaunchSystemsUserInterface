@@ -35,7 +35,7 @@ export const usePocketbase = (timestamps: Timestamps, stores: Stores) => {
 
 	const writeStateChange = async (state: string) => {
 		await pocketbase.collection('CommandMessage').create({
-			target: 'NODE_DMB',
+			target: 'NODE_FCB',
 			command: state
 		});
 	};
