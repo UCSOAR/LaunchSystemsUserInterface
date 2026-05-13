@@ -22,7 +22,7 @@
 		writeLoadCellCommand
 	} = usePocketbaseHook;
 
-	const { confirmStateChange, instantStateChange, resumeConfirmRemoveWeight } = useInteractionHook;
+	const { confirmStateChange, instantStateChange, MEVStateChange, resumeConfirmRemoveWeight } = useInteractionHook;
 
 	// Destructure stores for later use
 	const {
@@ -429,7 +429,7 @@
 			active="bg-primary-500 dark:bg-primary-500"
 			size="sm"
 			bind:checked={$drain_open}
-			on:click={(e) => handleSliderChange(e, 'NODE_PBB', 'RSC_OPEN_DRAIN', 'RSC_CLOSE_DRAIN')}
+			on:click={(e) => handleSliderChange(e, 'NODE_PBB', 'PBB_OPEN_DRAIN', 'PBB_CLOSE_DRAIN')}
 		>
 			{drain_display}
 		</SlideToggle>
@@ -817,14 +817,14 @@
 		<button
 			class="btn variant-filled-secondary next-state-btn"
 			style="top: calc(var(--container-width) * 0.5);"
-			on:click={() => instantStateChange('RSC_TEST_MEV_OPEN')}
+			on:click={() => MEVStateChange('PBB_MEV_OPEN')}
 		>
 			Open MEV
 		</button>
 		<button
 			class="btn variant-filled-secondary next-state-btn"
 			style="top: calc(var(--container-width) * 0.47);"
-			on:click={() => instantStateChange('RSC_MEV_CLOSE')}
+			on:click={() => MEVStateChange('PBB_MEV_CLOSE')}
 		>
 			Close MEV
 		</button>

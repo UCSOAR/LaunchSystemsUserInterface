@@ -32,7 +32,7 @@ class HeartbeatHandler:
         self.timer.start()
 
     def handle_timeout(self):
-        logger.error("Heartbeat timeout, aborting the DMB")
+        logger.error("Heartbeat timeout, aborting the FCB")
         self.stop()
         HeartbeatHandler.send_message_workq.put(
             WorkQ_Message(

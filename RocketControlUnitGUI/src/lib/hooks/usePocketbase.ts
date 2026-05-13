@@ -40,6 +40,13 @@ export const usePocketbase = (timestamps: Timestamps, stores: Stores) => {
 		});
 	};
 
+	const writeMEVStateChange = async (state: string) => {
+		await pocketbase.collection('CommandMessage').create({
+			target: 'NODE_PBB',
+			command: state
+		});
+	};
+
 	const writeCommandMessage = async (target: string, command: string) => {
 		await pocketbase.collection('CommandMessage').create({
 			target,
@@ -224,6 +231,7 @@ export const usePocketbase = (timestamps: Timestamps, stores: Stores) => {
 		authenticate,
 		sendHeartbeat,
 		writeStateChange,
+		writeMEVStateChange,
 		writeArbitraryCommand: writeCommandMessage,
 		writeLoadCellCommand,
 		subscribeToCollections

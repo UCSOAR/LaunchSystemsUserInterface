@@ -60,6 +60,12 @@ export const useInteraction = (pocketbaseHook: PocketbaseHook) => {
 		nextStatePending = '';
 	};
 
+	const MEVStateChange = (state: string) => {
+		nextStatePending = state;
+		pocketbaseHook.writeMEVStateChange(nextStatePending);
+		nextStatePending = '';
+	};
+
 	let promptStates: LoadCellPromptStates = {}
 
 	const confirmRemoveWeight = (loadcell: string) => {
@@ -164,6 +170,7 @@ export const useInteraction = (pocketbaseHook: PocketbaseHook) => {
 	return {
 		confirmStateChange,
 		instantStateChange,
+		MEVStateChange,
 		resumeConfirmRemoveWeight,
 	};
 };
