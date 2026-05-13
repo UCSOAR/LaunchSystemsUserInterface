@@ -113,10 +113,11 @@ class ProtobufParser:
         command_message.source = ProtoCore.NODE_FSB
         command_message.source_sequence_num = source_sequence_number
 
+        # TODO NEW update
         if target_enum == ProtoCore.NODE_FCB:
             command_message.target = ProtoCore.NODE_FCB
-            command_enum = utl.get_command_from_str(ProtoCmd.DmbCommand.Command, command)
-            command_message.dmb_command.CopyFrom(ProtoCmd.DmbCommand(command_enum=command_enum))
+            command_enum = utl.get_command_from_str(ProtoCmd.FcbCommand.Command, command)
+            command_message.fcb_command.CopyFrom(ProtoCmd.FcbCommand(command_enum=command_enum))
         elif target_enum == ProtoCore.NODE_PBB:
             command_message.target = ProtoCore.NODE_PBB
             command_enum = utl.get_command_from_str(ProtoCmd.PbbCommand.Command, command)
@@ -124,11 +125,11 @@ class ProtobufParser:
         elif target_enum == ProtoCore.NODE_LRB:
             command_message.target = ProtoCore.NODE_LRB
             command_enum = utl.get_command_from_str(ProtoCmd.SobCommand.Command, command)
-            command_message.sob_command.CopyFrom(ProtoCmd.SobCommand(command_enum=command_enum, command_param=command_param))
+            command_message.lrb_command.CopyFrom(ProtoCmd.SobCommand(command_enum=command_enum, command_param=command_param))
         elif target_enum == ProtoCore.NODE_FSB:
             command_message.target = ProtoCore.NODE_FSB
-            command_enum = utl.get_command_from_str(ProtoCmd.RcuCommand.Command, command)
-            command_message.rcu_command.CopyFrom(ProtoCmd.RcuCommand(command_enum=command_enum, command_param=command_param))
+            command_enum = utl.get_command_from_str(ProtoCmd.FsbCommand.Command, command)
+            command_message.fsb_command.CopyFrom(ProtoCmd.FsbCommand(command_enum=command_enum, command_param=command_param))
         else:
             return None
         

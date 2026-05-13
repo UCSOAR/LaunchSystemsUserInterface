@@ -39,11 +39,19 @@ def battery_write():
         }
     )
 
-
-def combustion_control_write():
-    pb.collection("CombustionControlStatus").create(
+def fcb_control_write():
+    pb.collection("FcbControlStatus").create(
         {
             "vent_open": random_int(),
+            # "drain_open": random_int(),
+            # "mev_open": random_bool(),
+        }
+    )
+
+def pbb_control_write():
+    pb.collection("PbbControlStatus").create(
+        {
+            # "vent_open": random_int(),
             "drain_open": random_int(),
             "mev_open": random_bool(),
         }
@@ -186,7 +194,8 @@ def sob_temperature_write():
 functions = [
     baro_write,
     battery_write,
-    combustion_control_write,
+    fcb_control_write,
+    pbb_control_write,
     dmb_pressure_write,
     gps_write,
     imu_write,

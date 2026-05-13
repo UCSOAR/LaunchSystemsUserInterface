@@ -1,6 +1,7 @@
 export interface Timestamps {
 	relay_status: number;
-	combustion_control_status: number;
+	fcb_control_status: number;
+	pbb_control_status: number;
 	rcu_temp: number;
 	pad_box_status: number;
 	battery: number;
@@ -22,7 +23,8 @@ export const initTimestamps = () => {
 
 	return {
 		relay_status: now,
-		combustion_control_status: now,
+		fcb_control_status: now,
+		pbb_control_status: now,
 		rcu_temp: now,
 		pad_box_status: now,
 		battery: now,

@@ -211,7 +211,8 @@
 		$timer_remaining === undefined ? 'N/A' : ($timer_remaining / 1000).toFixed(0); // Convert to seconds
 
 	$: relayStatusOutdated = Date.now() - timestamps.relay_status > 5000;
-	$: combustionControlStatusOutdated = Date.now() - timestamps.combustion_control_status > 5000;
+	$: fcbControlStatusOutdated = Date.now() - timestamps.fcb_control_status > 5000;
+	$: pbbControlStatusOutdated = Date.now() - timestamps.pbb_control_status > 5000;
 	$: rcuTempOutdated = Date.now() - timestamps.rcu_temp > 5000;
 	$: batteryOutdated = Date.now() - timestamps.battery > 5000;
 	$: launchRailLoadCellOutdated = Date.now() - timestamps.launch_rail_load_cell > 5000;
@@ -274,8 +275,8 @@
 	// NOTE: This seems odd but since the event will switch these MUST be swapped
 	// Open to alternate ways of doing it. Everything I tried didn't work.
 	const handleIgnition = async (e: MouseEvent) => {
-		await handleSliderChange(e, 'NODE_FSB', 'RCU_IGNITE_PAD_BOX1', 'RCU_KILL_BOX1');
-		await handleSliderChange(e, 'NODE_FSB', 'RCU_KILL_PAD_BOX2', 'RCU_IGNITE_PAD_BOX2');
+		await handleSliderChange(e, 'NODE_FSB', 'FSB_IGNITE_PAD_BOX1', 'FSB_KILL_BOX1');
+		await handleSliderChange(e, 'NODE_FSB', 'FSB_KILL_PAD_BOX2', 'FSB_IGNITE_PAD_BOX2');
 	};
 </script>
 
@@ -288,7 +289,7 @@
 			active="bg-primary-500 dark:bg-primary-500"
 			size="sm"
 			bind:checked={$ac1_open}
-			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'RCU_OPEN_AC1', 'RCU_CLOSE_AC1')}
+			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'FSB_OPEN_AC1', 'FSB_CLOSE_AC1')}
 		>
 			{ac1_display}
 		</SlideToggle>
@@ -300,7 +301,7 @@
 			active="bg-primary-500 dark:bg-primary-500"
 			size="sm"
 			bind:checked={$pbv1_open}
-			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'RCU_OPEN_PBV1', 'RCU_CLOSE_PBV1')}
+			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'FSB_OPEN_PBV1', 'FSB_CLOSE_PBV1')}
 		>
 			{pbv1_display}
 		</SlideToggle>
@@ -312,7 +313,7 @@
 			active="bg-primary-500 dark:bg-primary-500"
 			size="sm"
 			bind:checked={$pbv2_open}
-			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'RCU_OPEN_PBV2', 'RCU_CLOSE_PBV2')}
+			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'FSB_OPEN_PBV2', 'FSB_CLOSE_PBV2')}
 		>
 			{pbv2_display}
 		</SlideToggle>
@@ -324,7 +325,7 @@
 			active="bg-primary-500 dark:bg-primary-500"
 			size="sm"
 			bind:checked={$pbv3_open}
-			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'RCU_OPEN_PBV3', 'RCU_CLOSE_PBV3')}
+			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'FSB_OPEN_PBV3', 'FSB_CLOSE_PBV3')}
 		>
 			{pbv3_display}
 		</SlideToggle>
@@ -336,7 +337,7 @@
 			active="bg-primary-500 dark:bg-primary-500"
 			size="sm"
 			bind:checked={$pbv4_open}
-			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'RCU_OPEN_PBV4', 'RCU_CLOSE_PBV4')}
+			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'FSB_OPEN_PBV4', 'FSB_CLOSE_PBV4')}
 		>
 			{pbv4_display}
 		</SlideToggle>
@@ -348,7 +349,7 @@
 			active="bg-primary-500 dark:bg-primary-500"
 			size="sm"
 			bind:checked={$sol5_open}
-			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'RCU_OPEN_SOL5', 'RCU_CLOSE_SOL5')}
+			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'FSB_OPEN_SOL5', 'FSB_CLOSE_SOL5')}
 		>
 			{sol5_display}
 		</SlideToggle>
@@ -360,7 +361,7 @@
 			active="bg-primary-500 dark:bg-primary-500"
 			size="sm"
 			bind:checked={$sol6_open}
-			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'RCU_OPEN_SOL6', 'RCU_CLOSE_SOL6')}
+			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'FSB_OPEN_SOL6', 'FSB_CLOSE_SOL6')}
 		>
 			{sol6_display}
 		</SlideToggle>
@@ -372,7 +373,7 @@
 			active="bg-primary-500 dark:bg-primary-500"
 			size="sm"
 			bind:checked={$sol7_open}
-			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'RCU_OPEN_SOL7', 'RCU_CLOSE_SOL7')}
+			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'FSB_OPEN_SOL7', 'FSB_CLOSE_SOL7')}
 		>
 			{sol7_display}
 		</SlideToggle>
@@ -384,7 +385,7 @@
 			active="bg-primary-500 dark:bg-primary-500"
 			size="sm"
 			bind:checked={$sol8a_open}
-			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'RCU_OPEN_SOL8A', 'RCU_CLOSE_SOL8A')}
+			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'FSB_OPEN_SOL8A', 'FSB_CLOSE_SOL8A')}
 		>
 			{sol8a_display}
 		</SlideToggle>
@@ -396,14 +397,14 @@
 			active="bg-primary-500 dark:bg-primary-500"
 			size="sm"
 			bind:checked={$sol8b_open}
-			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'RCU_OPEN_SOL8B', 'RCU_CLOSE_SOL8B')}
+			on:click={(e) => handleSliderChange(e, 'NODE_FSB', 'FSB_OPEN_SOL8B', 'FSB_CLOSE_SOL8B')}
 		>
 			{sol8b_display}
 		</SlideToggle>
 	</div>
 
 	<div
-		class="vent_slider combustion_control_status {combustionControlStatusOutdated
+		class="vent_slider fcb_control_status {fcbControlStatusOutdated
 			? 'outdated'
 			: ''}"
 	>
@@ -419,7 +420,7 @@
 	</div>
 
 	<div
-		class="drain_slider combustion_control_status {combustionControlStatusOutdated
+		class="drain_slider pbb_control_status {pbbControlStatusOutdated
 			? 'outdated'
 			: ''}"
 	>
@@ -428,7 +429,7 @@
 			active="bg-primary-500 dark:bg-primary-500"
 			size="sm"
 			bind:checked={$drain_open}
-			on:click={(e) => handleSliderChange(e, 'NODE_FCB', 'RSC_OPEN_DRAIN', 'RSC_CLOSE_DRAIN')}
+			on:click={(e) => handleSliderChange(e, 'NODE_PBB', 'RSC_OPEN_DRAIN', 'RSC_CLOSE_DRAIN')}
 		>
 			{drain_display}
 		</SlideToggle>
@@ -620,7 +621,7 @@
 	<div class="box2_continuity"></div>
 
 	<div
-		class="mev_status combustion_control_status {combustionControlStatusOutdated ? 'outdated' : ''}"
+		class="mev_status pbb_control_status {pbbControlStatusOutdated ? 'outdated' : ''}"
 	>
 		<p>{mev_display}</p>
 	</div>

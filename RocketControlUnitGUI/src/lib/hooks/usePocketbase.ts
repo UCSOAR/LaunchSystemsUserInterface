@@ -74,13 +74,21 @@ export const usePocketbase = (timestamps: Timestamps, stores: Stores) => {
 			timestamps.relay_status = Date.now();
 		});
 
-		// Subscribe to changes in the 'CombustionControlStatus' collection
-		pocketbase.collection('CombustionControlStatus').subscribe('*', (e) => {
+		// Subscribe to changes in the 'FcbControlStatus' collection
+		pocketbase.collection('FcbControlStatus').subscribe('*', (e) => {
 			stores.vent_open.set(e.record.vent_open);
+			// stores.drain_open.set(e.record.drain_open);
+			// stores.mev_open.set(e.record.mev_open);
+
+			timestamps.fcb_control_status = Date.now();
+		});
+
+		pocketbase.collection('PbbControlStatus').subscribe('*', (e) => {
+			// stores.vent_open.set(e.record.vent_open);
 			stores.drain_open.set(e.record.drain_open);
 			stores.mev_open.set(e.record.mev_open);
 
-			timestamps.combustion_control_status = Date.now();
+			timestamps.pbb_control_status = Date.now();
 		});
 
 		// Subscribe to changes in the 'RcuTemperature' collection
