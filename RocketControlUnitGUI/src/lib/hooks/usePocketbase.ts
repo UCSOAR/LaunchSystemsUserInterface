@@ -121,12 +121,12 @@ export const usePocketbase = (timestamps: Timestamps, stores: Stores) => {
 			timestamps.battery = Date.now();
 		});
 
-		// Subscribe to changes in the 'DmbPressure' collection
-		pocketbase.collection('DmbPressure').subscribe('*', (e) => {
+		// Subscribe to changes in the 'fcbPressure' collection
+		pocketbase.collection('fcbPressure').subscribe('*', (e) => {
 			stores.upper_pv_pressure.set(
 				e.record.upper_pv_pressure < -100000 ? 'DC' : Math.round(e.record.upper_pv_pressure / 1000)
 			);
-			timestamps.dmb_pressure = Date.now();
+			timestamps.fcb_pressure = Date.now();
 		});
 
 		// Subscribe to changes in the 'LaunchRailLoadCell' collection

@@ -5,7 +5,7 @@ export interface Timestamps {
 	rcu_temp: number;
 	pad_box_status: number;
 	battery: number;
-	dmb_pressure: number;
+	fcb_pressure: number;
 	fcb_temperature: number;
 	launch_rail_load_cell: number;
 	nos_load_cell: number;
@@ -28,7 +28,7 @@ export const initTimestamps = () => {
 		rcu_temp: now,
 		pad_box_status: now,
 		battery: now,
-		dmb_pressure: now,
+		fcb_pressure: now,
 		fcb_temperature: now,
 		launch_rail_load_cell: now,
 		nos_load_cell: now,
