@@ -227,9 +227,9 @@ class SerialHandler():
 
         encBuf = Codec.Encode(buf, len(buf), ProtoCore.MessageID.MSG_COMMAND)
         target_enum = utl.get_node_from_str(target)
-        if (target_enum == ProtoCore.NODE_FCB or target_enum == ProtoCore.Node.NODE_PBB) and self.port == RADIO_SERIAL_PORT:
+        if (target_enum == ProtoCore.NODE_FCB) and self.port == RADIO_SERIAL_PORT:
             self.serial_port.write(encBuf)
-        if (target_enum ==  ProtoCore.NODE_FSB or target_enum ==  ProtoCore.Node.NODE_LRB) and self.port == UART_SERIAL_PORT:
+        if (target_enum ==  ProtoCore.NODE_FSB or target_enum ==  ProtoCore.Node.NODE_LRB or target_enum == ProtoCore.Node.NODE_PBB) and self.port == UART_SERIAL_PORT:
             self.serial_port.write(encBuf)
 
         return True

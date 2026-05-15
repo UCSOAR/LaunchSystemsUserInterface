@@ -38,6 +38,10 @@ export const usePocketbase = (timestamps: Timestamps, stores: Stores) => {
 			target: 'NODE_FCB',
 			command: state
 		});
+		await pocketbase.collection('CommandMessage').create({
+			target: 'NODE_PBB',
+			command: state
+		});
 	};
 
 	const writeMEVStateChange = async (state: string) => {

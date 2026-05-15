@@ -112,6 +112,7 @@ class ProtobufParser:
         command_message = ProtoCmd.CommandMessage()
         command_message.source = ProtoCore.NODE_FSB
         command_message.source_sequence_num = source_sequence_number
+        
 
         # TODO NEW update
         if target_enum == ProtoCore.NODE_FCB:
@@ -119,9 +120,16 @@ class ProtobufParser:
             command_enum = utl.get_command_from_str(ProtoCmd.FcbCommand.Command, command)
             command_message.fcb_command.CopyFrom(ProtoCmd.FcbCommand(command_enum=command_enum))
         elif target_enum == ProtoCore.NODE_PBB:
-            command_message.target = ProtoCore.NODE_PBB
-            command_enum = utl.get_command_from_str(ProtoCmd.PbbCommand.Command, command)
-            command_message.pbb_command.CopyFrom(ProtoCmd.PbbCommand(command_enum=command_enum))
+            # TODO NEW temporary permanent fix
+            if command.startswith("RSC"):
+                # Spoof to FCB
+                command_message.target = ProtoCore.NODE_PBB
+                command_enum = utl.get_command_from_str(ProtoCmd.FcbCommand.Command, command)
+                command_message.fcb_command.CopyFrom(ProtoCmd.FcbCommand(command_enum=command_enum))
+            else:
+                command_message.target = ProtoCore.NODE_PBB
+                command_enum = utl.get_command_from_str(ProtoCmd.PbbCommand.Command, command)
+                command_message.pbb_command.CopyFrom(ProtoCmd.PbbCommand(command_enum=command_enum))
         elif target_enum == ProtoCore.NODE_LRB:
             command_message.target = ProtoCore.NODE_LRB
             command_enum = utl.get_command_from_str(ProtoCmd.SobCommand.Command, command)
