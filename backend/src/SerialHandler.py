@@ -211,6 +211,7 @@ class SerialHandler():
 
         try:
             command_message = ProtobufParser.create_command_proto(command, target, command_param, source_sequence_number)
+            logger.warning(f"commander={command}, lebanon_target={target}, param={command_param}")
         except KeyError:
             logger.error(f"Attempting to send invalid command {command}")
             return False

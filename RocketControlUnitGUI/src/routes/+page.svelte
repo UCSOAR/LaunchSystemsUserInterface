@@ -817,14 +817,14 @@
 		<button
 			class="btn variant-filled-secondary next-state-btn"
 			style="top: calc(var(--container-width) * 0.5);"
-			on:click={() => MEVStateChange('PBB_MEV_OPEN')}
+			on:click={() => MEVStateChange('PBB_OPEN_MEV')}
 		>
 			Open MEV
 		</button>
 		<button
 			class="btn variant-filled-secondary next-state-btn"
 			style="top: calc(var(--container-width) * 0.47);"
-			on:click={() => MEVStateChange('PBB_MEV_CLOSE')}
+			on:click={() => MEVStateChange('PBB_CLOSE_MEV')}
 		>
 			Close MEV
 		</button>
