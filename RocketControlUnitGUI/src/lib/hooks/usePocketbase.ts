@@ -193,7 +193,7 @@ export const usePocketbase = (timestamps: Timestamps, stores: Stores) => {
 		});
 
 		// Subscribe to changes in the 'RcuPressure' collection
-		pocketbase.collection('RcuPressure').subscribe('*', (e) => {
+		pocketbase.collection('fsbPressure').subscribe('*', (e) => {
 			stores.pt1_pressure.set(e.record.pt1_pressure < -100 ? 'DC' : e.record.pt1_pressure);
 			stores.pt2_pressure.set(e.record.pt2_pressure < -100 ? 'DC' : e.record.pt2_pressure);
 			stores.pt3_pressure.set(e.record.pt3_pressure < -100 ? 'DC' : e.record.pt3_pressure);
