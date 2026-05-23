@@ -177,10 +177,10 @@
 	$: dip_tube_tc_display =
 		$dip_tube_tc_temperature === undefined ? 'N/A' : $dip_tube_tc_temperature;
 
-	$: rocket_mass_display = $rocket_mass === undefined ? 'N/A' : Number($rocket_mass).toFixed(2);
+	$: rocket_mass_display = $rocket_mass === undefined ? 'N/A' : Number($nos2_mass).toFixed(2);
 
 	$: nos1_mass_display = $nos1_mass === undefined ? 'N/A' : Number($nos1_mass).toFixed(2);
-	$: nos2_mass_display = $nos2_mass === undefined ? 'N/A' : Number($nos2_mass).toFixed(2);
+	$: nos2_mass_display = $nos2_mass === undefined ? 'N/A' : Number($rocket_mass).toFixed(2);
 
 	$: ib_pressure_display = $ib_pressure === undefined ? 'N/A' : $ib_pressure;
 	$: lower_pv_display = $lower_pv_pressure === undefined ? 'N/A' : $lower_pv_pressure;
@@ -542,7 +542,7 @@
 		<button
 			type="button"
 			class="btn btn-sm variant-filled-secondary"
-			on:click={() => performTare('NOS2')}
+			on:click={() => performTare('LAUNCHRAIL')}
 		>
 			TARE
 		</button>
@@ -553,8 +553,8 @@
 			type="button"
 			class="btn btn-sm variant-filled-error"
 			on:click={() => {
-				writeLoadCellCommand('NOS2', 'CANCEL', 0);
-				resumeConfirmRemoveWeight('NOS2');
+				writeLoadCellCommand('LAUNCHRAIL', 'CANCEL', 0);
+				resumeConfirmRemoveWeight('LAUNCHRAIL');
 			}}
 		>
 			CAL
@@ -565,7 +565,7 @@
 		<button
 			type="button"
 			class="btn btn-sm variant-filled-secondary"
-			on:click={() => performTare('LAUNCHRAIL')}
+			on:click={() => performTare('NOS2')}
 		>
 			TARE
 		</button>
@@ -576,8 +576,8 @@
 			type="button"
 			class="btn btn-sm variant-filled-error"
 			on:click={() => {
-				writeLoadCellCommand('LAUNCHRAIL', 'CANCEL', 0);
-				resumeConfirmRemoveWeight('LAUNCHRAIL');
+				writeLoadCellCommand('NOS2', 'CANCEL', 0);
+				resumeConfirmRemoveWeight('NOS2');
 			}}
 		>
 			CAL
