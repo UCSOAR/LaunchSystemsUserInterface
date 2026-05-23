@@ -82,6 +82,9 @@ export const usePocketbase = (timestamps: Timestamps, stores: Stores) => {
 			stores.sol8a_open.set(e.record.sol8a_open);
 			stores.sol8b_open.set(e.record.sol8b_open);
 
+			stores.vent_open.set(e.record.vent_open);
+			stores.drain_open.set(e.record.drain_open);
+
 			timestamps.relay_status = Date.now();
 		});
 

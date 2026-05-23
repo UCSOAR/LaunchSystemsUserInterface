@@ -49,6 +49,8 @@ export interface Stores {
 	timer_state: Writable<string | undefined>;
 	timer_period: Writable<number | undefined>;
 	timer_remaining: Writable<number | undefined>;
+	vent_open: Writable<any>;
+	drain_open: Writable<any>;
 }
 
 export const initStores = () => {
@@ -97,6 +99,8 @@ export const initStores = () => {
 		system_state: writable<string | undefined>(undefined),
 		timer_state: writable<string | undefined>(undefined),
 		timer_period: writable<number | undefined>(undefined),
-		timer_remaining: writable<number | undefined>(undefined)
+		timer_remaining: writable<number | undefined>(undefined),
+		vent_open: writable(undefined),
+		drain_open: writable(undefined)
 	};
 };
