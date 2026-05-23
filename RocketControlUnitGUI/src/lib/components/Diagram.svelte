@@ -29,37 +29,4 @@
   .diagram-wrapper :global(svg *) {
     transition: all 0.15s ease;
   }
-
-  .diagram-wrapper :global(.added-sensor text),
-  .diagram-wrapper :global(.added-heater text) {
-    fill: var(--diagram-outline-color);
-    font-family: Quicksand, sans-serif;
-    font-size: 13px;
-    text-anchor: middle;
-    dominant-baseline: middle;
-  }
-
-  .diagram-wrapper :global(.added-sensor circle),
-  .diagram-wrapper :global(.added-sensor line),
-  .diagram-wrapper :global(.added-sensor polyline),
-  .diagram-wrapper :global(.added-heater rect),
-  .diagram-wrapper :global(.added-heater path) {
-    stroke: var(--diagram-outline-color);
-  }
-
-  .diagram-wrapper :global(#Pressure\ Vessel) {
-    display: none;
-  }
-
-  .diagram-wrapper :global(#VENT) {
-    display: none;
-  }
-
-  .diagram-wrapper :global(.diagram-label) {
-    fill: var(--diagram-outline-color);
-    font-family: Quicksand, sans-serif;
-    font-size: 15px;
-    text-anchor: middle;
-    dominant-baseline: middle;
-  }
 </style>
