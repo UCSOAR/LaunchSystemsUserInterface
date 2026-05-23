@@ -9,6 +9,7 @@
 		id: number;
 		name: string;
 		enabled: boolean;
+		switchCommand: string;
 		enableCommand: string;
 		disableCommand: string;
 	};
@@ -23,6 +24,7 @@
 			id: 1,
 			name: 'Camera 1',
 			enabled: false,
+			switchCommand: 'RSC_CAMERA1_SWITCH',
 			enableCommand: 'RSC_CAM1_ENABLE',
 			disableCommand: 'RSC_CAM1_DISABLE'
 		},
@@ -30,6 +32,7 @@
 			id: 2,
 			name: 'Camera 2',
 			enabled: false,
+			switchCommand: 'RSC_CAMERA2_SWITCH',
 			enableCommand: 'RSC_CAM2_ENABLE',
 			disableCommand: 'RSC_CAM2_DISABLE'
 		},
@@ -37,6 +40,7 @@
 			id: 3,
 			name: 'Camera 3',
 			enabled: false,
+			switchCommand: 'RSC_CAMERA3_SWITCH',
 			enableCommand: 'RSC_CAM3_ENABLE',
 			disableCommand: 'RSC_CAM3_DISABLE'
 		}
@@ -80,12 +84,8 @@
 	const selectCamera = async (camera: Camera) => {
 		if (camera.id === selectedCameraId) return;
 
-		const switchCount = (camera.id - selectedCameraId + cameras.length) % cameras.length;
 		selectedCameraId = camera.id;
-
-		for (let i = 0; i < switchCount; i++) {
-			await writeArbitraryCommand('NODE_FCB', 'RSC_CAMERA_SWITCH');
-		}
+		await writeArbitraryCommand('NODE_FCB', camera.switchCommand);
 	};
 </script>
 
