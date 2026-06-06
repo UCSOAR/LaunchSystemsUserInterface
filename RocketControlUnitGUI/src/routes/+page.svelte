@@ -538,29 +538,6 @@
 		</button>
 	</div>
 
-	<div class="nos2_tare_button">
-		<button
-			type="button"
-			class="btn btn-sm variant-filled-secondary"
-			on:click={() => performTare('LAUNCHRAIL')}
-		>
-			TARE
-		</button>
-	</div>
-
-	<div class="nos2_cal_button">
-		<button
-			type="button"
-			class="btn btn-sm variant-filled-error"
-			on:click={() => {
-				writeLoadCellCommand('LAUNCHRAIL', 'CANCEL', 0);
-				resumeConfirmRemoveWeight('LAUNCHRAIL');
-			}}
-		>
-			CAL
-		</button>
-	</div>
-
 	<div class="rail_tare_button">
 		<button
 			type="button"
@@ -594,10 +571,6 @@
 
 	<div class="nos1 nos_load_cell {nosLoadCellOutdated ? 'outdated' : ''}">
 		<p>{nos1_mass_display}</p>
-	</div>
-
-	<div class="nos2 nos_load_cell {nosLoadCellOutdated ? 'outdated' : ''}">
-		<p>{nos2_mass_display}</p>
 	</div>
 
 	<div class="pt1_pressure rcu_pressure {rcuPressureOutdated ? 'outdated' : ''}">
@@ -646,8 +619,8 @@
 		<p>{dip_tube_tc_display}</p>
 	</div>
 
-	<div class="rocket_mass launch_rail_load_cell {launchRailLoadCellOutdated ? 'outdated' : ''}">
-		<p>{rocket_mass_display}</p>
+	<div class="rocket_mass nos_load_cell {nosLoadCellOutdated ? 'outdated' : ''}">
+		<p>{nos2_mass_display}</p>
 	</div>
 
 	<div class="ib_pressure pbb_pressure {pbbPressureOutdated ? 'outdated' : ''}">
