@@ -705,7 +705,7 @@
 		</button>
 		<button
 			class="btn variant-ghost-error next-state-btn"
-			style="top: calc(var(--container-width) * 0.53);"
+			style="top: calc(var(--container-width) * 0.54);"
 			on:click={() => instantStateChange('RSC_ANY_TO_ABORT')}
 		>
 			Go to Abort
@@ -741,7 +741,7 @@
 		</button>
 		<button
 			class="btn variant-ghost-error next-state-btn"
-			style="top: calc(var(--container-width) * 0.53);"
+			style="top: calc(var(--container-width) * 0.54);"
 			on:click={() => instantStateChange('RSC_ANY_TO_ABORT')}
 		>
 			Go to Abort
@@ -763,7 +763,7 @@
 		</button>
 		<button
 			class="btn variant-ghost-error next-state-btn"
-			style="top: calc(var(--container-width) * 0.53);"
+			style="top: calc(var(--container-width) * 0.54);"
 			on:click={() => instantStateChange('RSC_ANY_TO_ABORT')}
 		>
 			Go to Abort
@@ -786,7 +786,7 @@
 	{:else if $currentState == 'RS_ABORT'}
 		<button
 			class="btn variant-filled-secondary next-state-btn"
-			style="top: calc(var(--container-width) * 0.53);"
+			style="top: calc(var(--container-width) * 0.54);"
 			on:click={() => confirmStateChange('RSC_GOTO_PRELAUNCH')}
 		>
 			Go to Pre-Launch
@@ -801,7 +801,7 @@
 	{:else if $currentState == 'RS_RECOVERY'}
 		<button
 			class="btn variant-filled-secondary next-state-btn"
-			style="top: calc(var(--container-width) * 0.53);"
+			style="top: calc(var(--container-width) * 0.54);"
 			on:click={() => instantStateChange('RSC_ANY_TO_ABORT')}
 		>
 			Go to Abort
@@ -809,21 +809,21 @@
 	{:else if $currentState == 'RS_TEST'}
 		<button
 			class="btn variant-filled-secondary next-state-btn"
-			style="top: calc(var(--container-width) * 0.53);"
+			style="top: calc(var(--container-width) * 0.54);"
 			on:click={() => instantStateChange('RSC_ANY_TO_ABORT')}
 		>
 			Go to Abort
 		</button>
 		<button
 			class="btn variant-filled-secondary next-state-btn"
-			style="top: calc(var(--container-width) * 0.5);"
+			style="top: calc(var(--container-width) * 0.50);"
 			on:click={() => MEVStateChange('PBB_OPEN_MEV')}
 		>
 			Open MEV
 		</button>
 		<button
 			class="btn variant-filled-secondary next-state-btn"
-			style="top: calc(var(--container-width) * 0.47);"
+			style="top: calc(var(--container-width) * 0.46);"
 			on:click={() => MEVStateChange('PBB_CLOSE_MEV')}
 		>
 			Close MEV
