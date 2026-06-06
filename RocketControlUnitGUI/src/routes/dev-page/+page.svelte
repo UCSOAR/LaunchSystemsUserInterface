@@ -52,7 +52,7 @@
         flashPending = true;
 
         try {
-            await writeArbitraryCommand('NODE_FCB', 'ERASE_FLASH');
+            await writeArbitraryCommand('NODE_FCB', 'RSC_ERASE_FLASH');
         } finally {
             flashPending = false;
         }
