@@ -1,0 +1,43 @@
+export interface Timestamps {
+	relay_status: number;
+	fcb_control_status: number;
+	pbb_control_status: number;
+	rcu_temp: number;
+	pad_box_status: number;
+	battery: number;
+	fcb_pressure: number;
+	fcb_temperature: number;
+	launch_rail_load_cell: number;
+	nos_load_cell: number;
+	pbb_pressure: number;
+	pbb_temperature: number;
+	heater_status: number;
+	rcu_pressure: number;
+	sob_temperature: number;
+	sys_state: number;
+	heartbeat: number;
+}
+
+export const initTimestamps = () => {
+	const now = Date.now();
+
+	return {
+		relay_status: now,
+		fcb_control_status: now,
+		pbb_control_status: now,
+		rcu_temp: now,
+		pad_box_status: now,
+		battery: now,
+		fcb_pressure: now,
+		fcb_temperature: now,
+		launch_rail_load_cell: now,
+		nos_load_cell: now,
+		pbb_pressure: now,
+		pbb_temperature: now,
+		heater_status: now,
+		rcu_pressure: now,
+		sob_temperature: now,
+		sys_state: now,
+		heartbeat: now
+	};
+};
