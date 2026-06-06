@@ -16,8 +16,8 @@ node_modules
 !.env.example
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-package-lock.json
-package.json
+RocketControlUnitGUI/package-lock.json
+RocketControlUnitGUI/package.json
 
 # Pocketbase
 /database/pb_data
