@@ -180,7 +180,7 @@
 	// $: rocket_mass_display = $rocket_mass === undefined ? 'N/A' : Number($nos2_mass).toFixed(2);
 
 	$: nos1_mass_display = $nos1_mass === undefined ? 'N/A' : Number($nos1_mass).toFixed(2);
-	$: nos2_mass_display = $nos2_mass === undefined ? 'N/A' : Number($nos2_mass).toFixed(1);
+	$: nos2_mass_display = $nos2_mass === undefined ? 'N/A' : Number($nos2_mass).toFixed(2);
 
 	$: ib_pressure_display = $ib_pressure === undefined ? 'N/A' : $ib_pressure;
 	$: lower_pv_display = $lower_pv_pressure === undefined ? 'N/A' : $lower_pv_pressure;

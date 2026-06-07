@@ -10,7 +10,7 @@ export const usePocketbase = (timestamps: Timestamps, stores: Stores) => {
 
 	const formatTemperature = (temperature: number | undefined) => {
 		if (temperature === undefined) return undefined;
-		return temperature === 9999 ? 'DC' : Math.round(temperature / 100);
+		return temperature === 9999 ? 'DC' : Math.round(temperature);
 	};
 
 	const authenticate = async () => {

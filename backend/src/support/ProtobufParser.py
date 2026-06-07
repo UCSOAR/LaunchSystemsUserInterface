@@ -185,7 +185,7 @@ if __name__ == "__main__":
     # Parse the serialized message to JSON
     parsed = ProtobufParser.parse_serial_to_json(serialized_message, Core.MessageID.MSG_TELEMETRY)
     
-    client = Client("http://127.0.0.1:8090")
+    client = Client("http://198.0.168.178:8090")
     ProtobufParser.push_tele_json_to_pocketbase(client, parsed)
 
     # Output
