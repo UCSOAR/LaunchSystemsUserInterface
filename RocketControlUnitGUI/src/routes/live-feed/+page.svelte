@@ -12,6 +12,7 @@
 		switchCommand: string;
 		enableCommand: string;
 		disableCommand: string;
+		settings?: any;
 	};
 
 	const timestamps = initTimestamps();
@@ -46,7 +47,28 @@
 		}
 	];
 
-	$: selectedCamera = cameras.find((camera) => camera.id === selectedCameraId) ?? cameras[0];
+// per-camera settings map (keeps settings separate so each camera is independent)
+const defaultCameraSettings = (id: number) => ({
+	recording: false,
+	frequencyMHz: 1258,
+	power: '25mW'
+});
+
+let cameraSettings: Record<number, any> = {};
+// ensure defaults are available during SSR to avoid undefined template reads
+for (const c of cameras) cameraSettings[c.id] = defaultCameraSettings(c.id);
+
+// initialize per-camera defaults for SSR so template bindings are safe
+// per-camera busy flags for pending commands (not persisted)
+let cameraBusy: Record<number, boolean> = {};
+for (const c of cameras) cameraBusy[c.id] = false;
+
+let loadedPersistedState = false;
+let globalVideoTxOn = false;
+
+// settings will be initialized on mount (browser-only)
+
+$: selectedCamera = cameras.find((camera) => camera.id === selectedCameraId) ?? cameras[0];
 
 	onMount(() => {
 		let heartbeatInterval: ReturnType<typeof setInterval>;
@@ -63,6 +85,44 @@
 
 		handleAuth();
 
+		// load camera persisted states (browser-only)
+		try {
+			if (typeof window !== 'undefined') {
+				const raw = localStorage.getItem('camera_states');
+				if (raw) {
+					const parsed = JSON.parse(raw);
+					// support legacy format where parsed is a map of id -> {enabled,settings}
+					const data = parsed.cameras ? parsed : { cameras: parsed, selectedCameraId: parsed.selectedCameraId };
+					// restore enabled flags and separate settings map
+					cameraSettings = {};
+					cameras = cameras.map((c) => {
+						const saved = data.cameras[c.id] ?? {};
+						cameraSettings[c.id] = { ...defaultCameraSettings(c.id), ...(saved.settings ?? saved) };
+						return { ...c, enabled: saved.enabled ?? c.enabled };
+					});
+					// restore selectedCameraId if present
+					if (data.selectedCameraId) selectedCameraId = data.selectedCameraId;
+					// restore global video tx state if present
+					if (data.videoTxOn !== undefined) globalVideoTxOn = data.videoTxOn;
+				} else {
+					cameraSettings = {};
+					cameras = cameras.map((c) => {
+						cameraSettings[c.id] = defaultCameraSettings(c.id);
+						return c;
+					});
+				}
+			}
+		} catch (e) {
+			cameraSettings = {};
+			cameras = cameras.map((c) => {
+				cameraSettings[c.id] = defaultCameraSettings(c.id);
+				return c;
+			});
+		}
+
+		// mark that initial load finished so reactive persist can start
+		loadedPersistedState = true;
+
 		return () => {
 			clearInterval(heartbeatInterval);
 		};
@@ -74,6 +134,9 @@
 		);
 
 		await writeArbitraryCommand('NODE_FCB', enabled ? camera.enableCommand : camera.disableCommand);
+
+		// persist camera enabled state and settings
+		if (loadedPersistedState) persistCameraStates();
 	};
 
 	const handleCameraToggle = async (event: Event, camera: Camera) => {
@@ -87,6 +150,82 @@
 		selectedCameraId = camera.id;
 		await writeArbitraryCommand('NODE_FCB', camera.switchCommand);
 	};
+
+const persistCameraStates = () => {
+	try {
+		const map: Record<number, any> = {};
+		for (const c of cameras) map[c.id] = { enabled: c.enabled, settings: cameraSettings[c.id] };
+		const payload = { selectedCameraId, cameras: map, videoTxOn: globalVideoTxOn };
+		localStorage.setItem('camera_states', JSON.stringify(payload));
+	} catch (e) {
+		// ignore
+	}
+};
+
+const updateCameraSetting = async (cameraId: number, partial: Partial<any>) => {
+	cameraSettings = { ...cameraSettings, [cameraId]: { ...cameraSettings[cameraId], ...partial } };
+	// persist immediately
+	if (loadedPersistedState) persistCameraStates();
+};
+
+const sendCameraCommand = async (cameraId: number, command: string) => {
+	// forward to backend / proto via existing command mechanism
+	await writeArbitraryCommand('NODE_FCB', command);
+};
+
+// reactive: persist when cameraSettings or cameras or selectedCameraId change after initial load
+$: if (loadedPersistedState) {
+	// reference these so Svelte tracks them
+	cameraSettings; cameras; selectedCameraId;
+	persistCameraStates();
+}
+
+const pressPowerButton = async (cameraId: number) => {
+	await sendCameraCommand(cameraId, `RSC_CAM${cameraId}_POWER_BUTTON`);
+};
+
+const pressWifiButton = async (cameraId: number) => {
+	await sendCameraCommand(cameraId, `RSC_CAM${cameraId}_WIFI_BUTTON`);
+};
+
+const toggleRecording = async (cameraId: number) => {
+	const prev = cameraSettings[cameraId]?.recording;
+	const next = !prev;
+
+	// immediate toggle for UI
+	cameraSettings = { ...cameraSettings, [cameraId]: { ...cameraSettings[cameraId], recording: next } };
+	persistCameraStates();
+
+	// send command in background (do not block UI)
+	sendCameraCommand(cameraId, next ? `RSC_CAM${cameraId}_REC_START` : `RSC_CAM${cameraId}_REC_STOP`).catch(() => {
+		// optionally revert on failure — for now, leave UI toggled
+	});
+};
+
+const toggleVideoTx = async (cameraId: number) => {
+	// legacy per-camera toggle — map to global toggle
+	globalVideoTxOn = !globalVideoTxOn;
+	persistCameraStates();
+	// send global command
+	sendCameraCommand(0, globalVideoTxOn ? `RSC_CAM_TX_ON` : `RSC_CAM_TX_OFF`).catch(() => {});
+};
+
+const toggleVideoTxGlobal = async () => {
+	globalVideoTxOn = !globalVideoTxOn;
+	persistCameraStates();
+	sendCameraCommand(0, globalVideoTxOn ? `RSC_CAM_TX_ON` : `RSC_CAM_TX_OFF`).catch(() => {});
+};
+
+const setVideoFrequency = async (cameraId: number, freqMHz: number) => {
+	const clamped = Math.max(1258, Math.min(1280, Math.round(freqMHz)));
+	await sendCameraCommand(cameraId, `RSC_CAM${cameraId}_TX_FREQ_${clamped}`);
+	await updateCameraSetting(cameraId, { frequencyMHz: clamped });
+};
+
+const setVideoPower = async (cameraId: number, power: string) => {
+	await sendCameraCommand(cameraId, `RSC_CAM${cameraId}_TX_POWER_${power.replace(/[^0-9]/g, '')}`);
+	await updateCameraSetting(cameraId, { power });
+};
 </script>
 
 <svelte:head>
@@ -103,9 +242,45 @@
 		</div>
 
 		<div class="video-window">
-			<div class="video-placeholder">
-				<div class="camera-mark">{selectedCamera.id}</div>
-				<p>{selectedCamera.name}</p>
+			{#if selectedCamera.enabled}
+				<div class="video-placeholder">
+					<div class="camera-mark">{selectedCamera.id}</div>
+					<p>{selectedCamera.name}</p>
+				</div>
+			{/if}
+
+			<div class="camera-settings">
+				<h3>{selectedCamera.name} — Settings</h3>
+				<div class="settings-row">
+					<button class="btn" on:click={() => pressPowerButton(selectedCamera.id)}>Power Button</button>
+					<button class="btn" on:click={() => pressWifiButton(selectedCamera.id)}>WiFi Button</button>
+					<button class="btn {cameraSettings[selectedCamera.id].recording ? 'recording' : ''}" on:click={() => toggleRecording(selectedCamera.id)}>
+						{#if cameraSettings[selectedCamera.id].recording}
+							Recording
+						{:else}
+							Start Recording
+						{/if}
+					</button>
+				</div>
+				<!-- Video TX moved to side panel (global) -->
+				<div class="settings-row">
+					<label>Frequency (MHz)
+						<select class="numeric-input" bind:value={cameraSettings[selectedCamera.id].frequencyMHz} on:change={(e) => setVideoFrequency(selectedCamera.id, Number((e.target).value))}>
+							<option value="1258">1258</option>
+							<option value="1280">1280</option>
+						</select>
+					</label>
+				</div>
+				<div class="settings-row">
+					<label>Power
+						<select class="power-select" bind:value={cameraSettings[selectedCamera.id].power} on:change={(e) => setVideoPower(selectedCamera.id, (e.target).value)}>
+							<option>25mW</option>
+							<option>200mW</option>
+							<option>1W</option>
+							<option>4W</option>
+						</select>
+					</label>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -123,6 +298,17 @@
 					{camera.name}
 				</button>
 			{/each}
+		</div>
+
+		<div class="global-tx">
+			<p class="tx-label">Video TX</p>
+			<SlideToggle
+				name="global_video_tx"
+				active="bg-primary-500 dark:bg-primary-500"
+				size="sm"
+				checked={globalVideoTxOn}
+				on:click={() => toggleVideoTxGlobal()}
+			/>
 		</div>
 
 		<div class="camera-toggles">
@@ -284,6 +470,44 @@
 	.camera-toggle-row span {
 		color: rgba(255, 255, 255, 0.62);
 		font-size: 0.8rem;
+	}
+
+	.camera-settings {
+		display: grid;
+		gap: 0.75rem;
+		color: rgba(255,255,255,0.9);
+		padding: 1rem;
+	}
+
+	.settings-row {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+	}
+
+	.btn {
+		padding: 0.5rem 0.75rem;
+		border-radius: 6px;
+		background: rgba(255,255,255,0.06);
+		border: 1px solid rgba(255,255,255,0.08);
+		color: inherit;
+		font-weight:700;
+	}
+
+	.btn.recording {
+		background: rgb(var(--color-success-400));
+		color: white;
+		border-color: rgb(var(--color-success-400));
+	}
+
+	/* make power and frequency text black */
+	.camera-settings .numeric-input,
+	.camera-settings .power-select {
+		color: black;
+		background: white;
+		border-radius: 4px;
+		padding: 0.25rem 0.4rem;
+		border: 1px solid rgba(0,0,0,0.15);
 	}
 
 	@media (max-width: 900px) {
