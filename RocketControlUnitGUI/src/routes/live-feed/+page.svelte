@@ -65,6 +65,8 @@ for (const c of cameras) cameraBusy[c.id] = false;
 
 let loadedPersistedState = false;
 let globalVideoTxOn = false;
+let globalVideoFrequencyMHz = 1258;
+let globalVideoPower = '25mW';
 
 // settings will be initialized on mount (browser-only)
 
@@ -102,8 +104,10 @@ $: selectedCamera = cameras.find((camera) => camera.id === selectedCameraId) ?? 
 					});
 					// restore selectedCameraId if present
 					if (data.selectedCameraId) selectedCameraId = data.selectedCameraId;
-					// restore global video tx state if present
-					if (data.videoTxOn !== undefined) globalVideoTxOn = data.videoTxOn;
+						// restore global video tx state if present
+						if (data.videoTxOn !== undefined) globalVideoTxOn = data.videoTxOn;
+						if (data.videoFrequencyMHz !== undefined) globalVideoFrequencyMHz = data.videoFrequencyMHz;
+						if (data.videoPower !== undefined) globalVideoPower = data.videoPower;
 				} else {
 					cameraSettings = {};
 					cameras = cameras.map((c) => {
@@ -155,7 +159,13 @@ const persistCameraStates = () => {
 	try {
 		const map: Record<number, any> = {};
 		for (const c of cameras) map[c.id] = { enabled: c.enabled, settings: cameraSettings[c.id] };
-		const payload = { selectedCameraId, cameras: map, videoTxOn: globalVideoTxOn };
+		const payload = {
+			selectedCameraId,
+			cameras: map,
+			videoTxOn: globalVideoTxOn,
+			videoFrequencyMHz: globalVideoFrequencyMHz,
+			videoPower: globalVideoPower
+		};
 		localStorage.setItem('camera_states', JSON.stringify(payload));
 	} catch (e) {
 		// ignore
@@ -216,15 +226,19 @@ const toggleVideoTxGlobal = async () => {
 	sendCameraCommand(0, globalVideoTxOn ? `RSC_CAM_TX_ON` : `RSC_CAM_TX_OFF`).catch(() => {});
 };
 
-const setVideoFrequency = async (cameraId: number, freqMHz: number) => {
+const setGlobalVideoFrequency = async (freqMHz: number) => {
 	const clamped = Math.max(1258, Math.min(1280, Math.round(freqMHz)));
-	await sendCameraCommand(cameraId, `RSC_CAM${cameraId}_TX_FREQ_${clamped}`);
-	await updateCameraSetting(cameraId, { frequencyMHz: clamped });
+	// send global freq command
+	sendCameraCommand(0, `RSC_CAM_TX_FREQ_${clamped}`).catch(() => {});
+	globalVideoFrequencyMHz = clamped;
+	if (loadedPersistedState) persistCameraStates();
 };
 
-const setVideoPower = async (cameraId: number, power: string) => {
-	await sendCameraCommand(cameraId, `RSC_CAM${cameraId}_TX_POWER_${power.replace(/[^0-9]/g, '')}`);
-	await updateCameraSetting(cameraId, { power });
+const setGlobalVideoPower = async (power: string) => {
+	const numeric = power.replace(/[^0-9]/g, '') || '25';
+	sendCameraCommand(0, `RSC_CAM_TX_POWER_${numeric}`).catch(() => {});
+	globalVideoPower = power;
+	if (loadedPersistedState) persistCameraStates();
 };
 </script>
 
@@ -262,25 +276,7 @@ const setVideoPower = async (cameraId: number, power: string) => {
 						{/if}
 					</button>
 				</div>
-				<!-- Video TX moved to side panel (global) -->
-				<div class="settings-row">
-					<label>Frequency (MHz)
-						<select class="numeric-input" bind:value={cameraSettings[selectedCamera.id].frequencyMHz} on:change={(e) => setVideoFrequency(selectedCamera.id, Number((e.target).value))}>
-							<option value="1258">1258</option>
-							<option value="1280">1280</option>
-						</select>
-					</label>
-				</div>
-				<div class="settings-row">
-					<label>Power
-						<select class="power-select" bind:value={cameraSettings[selectedCamera.id].power} on:change={(e) => setVideoPower(selectedCamera.id, (e.target).value)}>
-							<option>25mW</option>
-							<option>200mW</option>
-							<option>1W</option>
-							<option>4W</option>
-						</select>
-					</label>
-				</div>
+				<!-- Frequency and Power are global controls (see right panel) -->
 			</div>
 		</div>
 	</section>
@@ -309,6 +305,22 @@ const setVideoPower = async (cameraId: number, power: string) => {
 				checked={globalVideoTxOn}
 				on:click={() => toggleVideoTxGlobal()}
 			/>
+			<div class="global-tx-controls">
+				<label>Frequency (MHz)
+					<select class="numeric-input" bind:value={globalVideoFrequencyMHz} on:change={(e) => setGlobalVideoFrequency(Number((e.target).value))}>
+						<option value={1258}>1258</option>
+						<option value={1280}>1280</option>
+					</select>
+				</label>
+				<label>Power
+					<select class="power-select" bind:value={globalVideoPower} on:change={(e) => setGlobalVideoPower((e.target).value)}>
+						<option>25mW</option>
+						<option>200mW</option>
+						<option>1W</option>
+						<option>4W</option>
+					</select>
+				</label>
+			</div>
 		</div>
 
 		<div class="camera-toggles">
@@ -500,9 +512,11 @@ const setVideoPower = async (cameraId: number, power: string) => {
 		border-color: rgb(var(--color-success-400));
 	}
 
-	/* make power and frequency text black */
+	/* make power and frequency text black (camera settings and global controls) */
 	.camera-settings .numeric-input,
-	.camera-settings .power-select {
+	.camera-settings .power-select,
+	.global-tx-controls .numeric-input,
+	.global-tx-controls .power-select {
 		color: black;
 		background: white;
 		border-radius: 4px;
