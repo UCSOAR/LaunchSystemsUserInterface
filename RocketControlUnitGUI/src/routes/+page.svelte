@@ -771,6 +771,23 @@
 		>
 			Go to Test
 		</button>
+
+	{:else if $currentState == 'RS_TOUCHDOWN'}
+		<button
+			class="btn variant-filled-secondary next-state-btn"
+			style="top: calc(var(--container-width) * 0.54);"
+			on:click={() => confirmStateChange('RSC_ANY_TO_ABORT')}
+		>
+			Go to Abort
+		</button>
+		<button
+			class="btn variant-filled-secondary next-state-btn"
+			style="top: calc(var(--container-width) * 0.5);"
+			on:click={() => confirmStateChange('RSC_GOTO_TEST')}
+		>
+			Go to Test
+		</button>
+
 	{:else if $currentState == 'RS_RECOVERY'}
 		<button
 			class="btn variant-filled-secondary next-state-btn"
